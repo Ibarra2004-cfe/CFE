@@ -15,7 +15,7 @@ import { UpdateM9mexDto } from "./dto/update-m9mex.dto";
 export class M9mexController {
   constructor(
     private readonly m9mexService: M9mexService,
-  ) {}
+  ) { }
 
   @Post()
   create(@Body() dto: CreateM9mexDto) {
@@ -50,5 +50,15 @@ export class M9mexController {
     }
 
     return this.m9mexService.generarExcel(numericId);
+  }
+
+  @Get(":id/pdf")
+  generarPdf(@Param("id") id: string) {
+    const numericId = Number(id);
+    if (Number.isNaN(numericId)) {
+      throw new Error("ID inválido");
+    }
+
+    return this.m9mexService.generarPdf(numericId);
   }
 }

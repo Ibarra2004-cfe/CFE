@@ -1,4 +1,9 @@
 {
+  "name": "cfe-root",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "./start-all.sh"
+  },
   "dependencies": {
     "exceljs": "^4.4.0"
   }
