@@ -36,6 +36,8 @@ export class M9mexService {
       data: {
         folio,
         ...dto,
+        ...this.applyMeterDefaults(dto), // Auto-fill installed
+        ...this.applyMeterDefaultsRet(dto), // Auto-fill removed
         fecha,
 
         tipoOrden: dto.tipoOrden,
@@ -148,10 +150,99 @@ export class M9mexService {
     if (dto.ret_kwh !== undefined) data.ret_kwh = dto.ret_kwh;
     if (dto.ret_kw !== undefined) data.ret_kw = dto.ret_kw;
 
+    // Check if codigoMedidor changed to re-apply defaults
+    if (dto.codigoMedidor) {
+      const defaults = this.applyMeterDefaults({ codigoMedidor: dto.codigoMedidor } as any);
+      Object.assign(data, defaults);
+    }
+    if (dto.ret_codigoMedidor) {
+      const defaults = this.applyMeterDefaultsRet({ ret_codigoMedidor: dto.ret_codigoMedidor } as any);
+      Object.assign(data, defaults);
+    }
+
+    // Check new text fields (ret_*)
+    const retFields = [
+      "ret_noCfe", "ret_noFabrica", "ret_marcaMedidor", "ret_tipoMedidor",
+      "ret_codigoMedidor", "ret_codigoLote", "ret_faseElementos", "ret_hilosConexion",
+      "ret_ampsClase", "ret_volts", "ret_rrRs", "ret_khKr",
+      "ret_noCaratulas", "ret_multiplicador", "ret_kwTipo"
+    ];
+    for (const f of retFields) {
+      if (f in dto) data[f] = (dto as any)[f];
+    }
+
     return this.prisma.m9Mex.update({
       where: { id },
       data,
     });
+  }
+
+  private applyMeterDefaults(dto: CreateM9mexDto) {
+    const code = dto.codigoMedidor;
+    if (!code) return {};
+
+    if (code.startsWith("KL")) {
+      return {
+        faseElementos: "3-3",
+        hilosConexion: "4-Y",
+        ampsClase: "30(200)",
+        volts: "120-480",
+        khKr: "21.6"
+      };
+    }
+    if (code.startsWith("VL")) {
+      return {
+        faseElementos: "3-3",
+        hilosConexion: "4-Y",
+        ampsClase: "2.5(20)",
+        volts: "120-480",
+        khKr: "1.8"
+      };
+    }
+    if (code.startsWith("F623")) {
+      return {
+        faseElementos: "2-2",
+        hilosConexion: "2-Y",
+        ampsClase: "15(100)",
+        volts: "120",
+        khKr: "1"
+      };
+    }
+    return {};
+  }
+
+  private applyMeterDefaultsRet(dto: CreateM9mexDto) {
+    const code = dto.ret_codigoMedidor;
+    if (!code) return {};
+
+    if (code.startsWith("KL")) {
+      return {
+        ret_faseElementos: "3-3",
+        ret_hilosConexion: "4-Y",
+        ret_ampsClase: "30(200)",
+        ret_volts: "120-480",
+        ret_khKr: "21.6"
+      };
+    }
+    if (code.startsWith("VL")) {
+      return {
+        ret_faseElementos: "3-3",
+        ret_hilosConexion: "4-Y",
+        ret_ampsClase: "2.5(20)",
+        ret_volts: "120-480",
+        ret_khKr: "1.8"
+      };
+    }
+    if (code.startsWith("F623")) {
+      return {
+        ret_faseElementos: "2-2",
+        ret_hilosConexion: "2-Y",
+        ret_ampsClase: "15(100)",
+        ret_volts: "120",
+        ret_khKr: "1"
+      };
+    }
+    return {};
   }
 
 

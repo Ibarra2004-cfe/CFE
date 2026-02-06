@@ -1,10 +1,10 @@
 import { IsDateString, IsEnum, IsOptional, IsString } from "class-validator";
 
-export enum TipoOrdenDto { INSTALACION="INSTALACION", RETIRO="RETIRO", CAMBIO="CAMBIO", MODIFICACION="MODIFICACION" }
-export enum MedicionEnDto { BAJA_TENSION="BAJA_TENSION", ALTA_TENSION="ALTA_TENSION" }
-export enum SiNoDto { SI="SI", NO="NO" }
-export enum ReactivaTipoDto { KVARH="KVARH", KQH="KQH" }
-export enum IndicacionDto { INDICATIVA="INDICATIVA", DIRECTA="DIRECTA" }
+export enum TipoOrdenDto { INSTALACION = "INSTALACION", RETIRO = "RETIRO", CAMBIO = "CAMBIO", MODIFICACION = "MODIFICACION" }
+export enum MedicionEnDto { BAJA_TENSION = "BAJA_TENSION", ALTA_TENSION = "ALTA_TENSION" }
+export enum SiNoDto { SI = "SI", NO = "NO" }
+export enum ReactivaTipoDto { KVARH = "KVARH", KQH = "KQH" }
+export enum IndicacionDto { INDICATIVA = "INDICATIVA", DIRECTA = "DIRECTA" }
 
 export class CreateM9mexDto {
   @IsDateString() fecha: string;
@@ -43,6 +43,22 @@ export class CreateM9mexDto {
   @IsOptional() @IsString() noCaratulas?: string;
   @IsOptional() @IsString() multiplicador?: string;
   @IsOptional() @IsString() kwTipo?: string;
+
+  @IsOptional() @IsString() ret_noCfe?: string;
+  @IsOptional() @IsString() ret_noFabrica?: string;
+  @IsOptional() @IsString() ret_marcaMedidor?: string;
+  @IsOptional() @IsString() ret_tipoMedidor?: string;
+  @IsOptional() @IsString() ret_codigoMedidor?: string;
+  @IsOptional() @IsString() ret_codigoLote?: string;
+  @IsOptional() @IsString() ret_faseElementos?: string;
+  @IsOptional() @IsString() ret_hilosConexion?: string;
+  @IsOptional() @IsString() ret_ampsClase?: string;
+  @IsOptional() @IsString() ret_volts?: string;
+  @IsOptional() @IsString() ret_rrRs?: string;
+  @IsOptional() @IsString() ret_khKr?: string;
+  @IsOptional() @IsString() ret_noCaratulas?: string;
+  @IsOptional() @IsString() ret_multiplicador?: string;
+  @IsOptional() @IsString() ret_kwTipo?: string;
 
   @IsOptional() @IsString() inst_kwh?: string;
   @IsOptional() @IsString() inst_kw?: string;

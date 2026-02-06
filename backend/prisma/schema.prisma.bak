@@ -78,23 +78,6 @@ model M9Mex {
   multiplicador String?
   kwTipo        String?
 
-  // Datos del medidor RETIRADO
-  ret_noCfe         String?
-  ret_noFabrica     String?
-  ret_marcaMedidor  String?
-  ret_tipoMedidor   String?
-  ret_codigoMedidor String?
-  ret_codigoLote     String?
-  ret_faseElementos String?
-  ret_hilosConexion String?
-  ret_ampsClase     String?
-  ret_volts         String?
-  ret_rrRs          String?
-  ret_khKr          String?
-  ret_noCaratulas   String?
-  ret_multiplicador String?
-  ret_kwTipo        String?
-
   // INSTALADO
   inst_kwh      String?
   inst_kw       String?
