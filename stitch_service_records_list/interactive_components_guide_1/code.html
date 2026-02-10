@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Advanced Filtering Systems</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f7ff0",
+                        "primary-dark": "#0a5eb5",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e2936",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d141c] dark:text-slate-100 min-h-screen">
+<div class="max-w-[430px] mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-2xl pb-10">
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 sticky top-0 z-50 border-b border-slate-100 dark:border-slate-800">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Filters &amp; Sorting</h2>
+</div>
+<div class="px-4">
+<div class="pt-6 pb-2">
+<h1 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Design System</h1>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Components for querying large industrial datasets.</p>
+</div>
+<h2 class="text-sm font-bold text-slate-400 uppercase tracking-wider pt-8 pb-4">01. Chip-based Filter Bar</h2>
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700/50">
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Horizontal scrollable bar for quick main-screen toggles.</p>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-sm font-medium shadow-sm shadow-blue-200 dark:shadow-none whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        All Assets
+                    </button>
+<button class="flex items-center gap-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 px-4 py-2 rounded-full text-sm font-medium text-slate-700 dark:text-slate-200 whitespace-nowrap hover:border-primary dark:hover:border-primary transition-colors">
+                        Critical
+                        <span class="bg-rose-100 text-rose-600 dark:bg-rose-900/50 dark:text-rose-400 text-[10px] px-1.5 py-0.5 rounded-full font-bold">3</span>
+</button>
+<button class="flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 px-4 py-2 rounded-full text-sm font-medium text-primary whitespace-nowrap">
+                        In Maintenance
+                        <span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+<button class="flex items-center gap-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 px-4 py-2 rounded-full text-sm font-medium text-slate-700 dark:text-slate-200 whitespace-nowrap">
+                        Offline
+                    </button>
+</div>
+</div>
+<h2 class="text-sm font-bold text-slate-400 uppercase tracking-wider pt-8 pb-4">02. Complex Filter Drawer</h2>
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
+<div class="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-800/80">
+<h3 class="font-semibold text-slate-900 dark:text-white">Filter Assets</h3>
+<span class="text-xs font-medium text-primary cursor-pointer hover:underline">Reset All</span>
+</div>
+<div class="p-5 space-y-6">
+<div>
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Asset Type</label>
+<div class="relative group">
+<div class="flex items-center w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 p-2 focus-within:ring-2 focus-within:ring-primary focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-400 text-[20px] ml-1">search</span>
+<div class="flex flex-wrap gap-1.5 ml-2 flex-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-600">
+                                        Generators
+                                        <span class="material-symbols-outlined text-[14px] cursor-pointer hover:text-red-500">close</span>
+</span>
+<input class="bg-transparent border-none text-sm p-0 focus:ring-0 placeholder:text-slate-400 w-20 dark:text-white" placeholder="Add type..." type="text"/>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[20px] cursor-pointer">expand_more</span>
+</div>
+<div class="absolute top-full left-0 w-full mt-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg shadow-xl z-20 hidden group-hover:block">
+<div class="p-1">
+<div class="flex items-center gap-2 p-2 hover:bg-slate-50 dark:hover:bg-slate-700 rounded cursor-pointer">
+<div class="w-4 h-4 border border-slate-300 rounded bg-primary border-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[12px]">check</span>
+</div>
+<span class="text-sm">Generators</span>
+</div>
+<div class="flex items-center gap-2 p-2 hover:bg-slate-50 dark:hover:bg-slate-700 rounded cursor-pointer">
+<div class="w-4 h-4 border border-slate-300 dark:border-slate-500 rounded flex items-center justify-center"></div>
+<span class="text-sm dark:text-slate-200">Transformers</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Inspection Date</label>
+<div class="grid grid-cols-2 gap-3">
+<div class="relative">
+<input class="w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm text-slate-700 dark:text-slate-200 focus:ring-primary focus:border-primary pl-9 dark:[color-scheme:dark]" type="date" value="2023-10-01"/>
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">calendar_today</span>
+</div>
+<div class="relative">
+<input class="w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm text-slate-700 dark:text-slate-200 focus:ring-primary focus:border-primary pl-9 dark:[color-scheme:dark]" type="date"/>
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">event</span>
+</div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-3">
+<label class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Pressure (PSI)</label>
+<span class="text-xs font-medium text-primary bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded">120 - 850 PSI</span>
+</div>
+<div class="relative h-10 flex items-center">
+<div class="absolute w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+<div class="absolute left-[15%] right-[25%] h-1.5 bg-primary rounded-full"></div>
+<div class="absolute left-[15%] w-6 h-6 bg-white dark:bg-slate-800 border-2 border-primary rounded-full shadow-md cursor-grab z-10 flex items-center justify-center -translate-x-1/2 hover:scale-110 transition-transform">
+<div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+</div>
+<div class="absolute right-[25%] w-6 h-6 bg-white dark:bg-slate-800 border-2 border-primary rounded-full shadow-md cursor-grab z-10 flex items-center justify-center translate-x-1/2 hover:scale-110 transition-transform">
+<div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="flex justify-between text-[10px] text-slate-400 font-medium mt-1">
+<span>0 PSI</span>
+<span>500 PSI</span>
+<span>1000 PSI</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">check</span>
+                        Apply Filters (24)
+                    </button>
+</div>
+</div>
+<h2 class="text-sm font-bold text-slate-400 uppercase tracking-wider pt-8 pb-4">03. Sorting Options</h2>
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-1">
+<label class="flex items-center justify-between p-3.5 border-b border-slate-100 dark:border-slate-700/50 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">calendar_month</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Date: Newest First</span>
+</div>
+<div class="relative flex items-center">
+<input checked="" class="peer h-5 w-5 border-2 border-slate-300 dark:border-slate-600 text-primary focus:ring-0 focus:ring-offset-0 cursor-pointer" name="sort" type="radio"/>
+<div class="absolute inset-0 bg-primary rounded-full scale-0 peer-checked:scale-50 transition-transform"></div>
+</div>
+</label>
+<label class="flex items-center justify-between p-3.5 border-b border-slate-100 dark:border-slate-700/50 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">history</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Date: Oldest First</span>
+</div>
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 border-2 border-slate-300 dark:border-slate-600 text-primary focus:ring-0 focus:ring-offset-0 cursor-pointer" name="sort" type="radio"/>
+</div>
+</label>
+<label class="flex items-center justify-between p-3.5 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">warning</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Severity: High to Low</span>
+</div>
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 border-2 border-slate-300 dark:border-slate-600 text-primary focus:ring-0 focus:ring-offset-0 cursor-pointer" name="sort" type="radio"/>
+</div>
+</label>
+</div>
+<div class="h-8"></div>
+</div>
+</div>
+
+</body></html>

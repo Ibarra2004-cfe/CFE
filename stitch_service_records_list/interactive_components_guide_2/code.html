@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Interactive Components Guide</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f7ff0",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .custom-checkbox-tick {
+            --checkbox-tick-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(255,255,255)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e');
+        }
+        .custom-radio-dot {
+            --radio-dot-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(15,127,240)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%273.5%27/%3e%3c/svg%3e');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d141c] dark:text-slate-100 min-h-screen">
+<div class="max-w-[430px] mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-2xl pb-10">
+<!-- Top App Bar -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 sticky top-0 z-50 border-b border-slate-100 dark:border-slate-800">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Interactive Guide</h2>
+</div>
+<div class="px-4">
+<!-- Section: Selection Controls -->
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-6 pb-2">Selection Controls</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 pb-4">Standard checkbox and radio variants for form entries.</p>
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4 custom-checkbox-tick">
+<label class="flex gap-x-3 py-3 flex-row items-center border-b border-slate-200 dark:border-slate-700 last:border-0">
+<input checked="" class="h-6 w-6 rounded border-[#cfdbe8] border-2 bg-transparent text-primary checked:bg-primary checked:border-primary checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-[#cfdbe8] focus:outline-none" type="checkbox"/>
+<p class="text-base font-medium">Power Grid Status</p>
+</label>
+<label class="flex gap-x-3 py-3 flex-row items-center border-b border-slate-200 dark:border-slate-700 last:border-0">
+<input class="h-6 w-6 rounded border-[#cfdbe8] border-2 bg-transparent text-primary checked:bg-primary checked:border-primary checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-[#cfdbe8] focus:outline-none" type="checkbox"/>
+<p class="text-base font-medium">Water Pressure Alert</p>
+</label>
+<label class="flex gap-x-3 py-3 flex-row items-center opacity-50">
+<input class="h-6 w-6 rounded border-[#cfdbe8] border-2 bg-slate-200 text-primary focus:ring-0 focus:outline-none" disabled="" type="checkbox"/>
+<p class="text-base font-medium">Automatic Backup (Pro)</p>
+</label>
+</div>
+<!-- Section: Radio Group -->
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-4">Radio Group</h2>
+<div class="flex flex-col gap-3 custom-radio-dot">
+<label class="flex items-center gap-4 rounded-xl border border-solid border-[#cfdbe8] dark:border-slate-700 p-4 hover:border-primary transition-colors cursor-pointer">
+<input checked="" class="h-5 w-5 border-2 border-[#cfdbe8] dark:border-slate-600 bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary" name="report-freq" type="radio"/>
+<div class="flex grow flex-col"><p class="text-sm font-semibold">Daily Telemetry</p></div>
+</label>
+<label class="flex items-center gap-4 rounded-xl border border-solid border-[#cfdbe8] dark:border-slate-700 p-4 hover:border-primary transition-colors cursor-pointer">
+<input class="h-5 w-5 border-2 border-[#cfdbe8] dark:border-slate-600 bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary" name="report-freq" type="radio"/>
+<div class="flex grow flex-col"><p class="text-sm font-semibold">Weekly Summary</p></div>
+</label>
+</div>
+<!-- Section: Switches & Toggles -->
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-4">System Toggles</h2>
+<div class="flex flex-col space-y-4">
+<div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+<div>
+<p class="font-semibold text-sm">Critical Push Notifications</p>
+<p class="text-xs text-slate-500">Immediate alerts for outages</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+<div>
+<p class="font-semibold text-sm">Offline Data Caching</p>
+<p class="text-xs text-slate-500">Save reports locally</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Section: Multi-select Chips -->
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-4">Active Filters</h2>
+<div class="flex flex-wrap gap-2">
+<div class="flex items-center gap-1 bg-primary text-white px-3 py-1.5 rounded-full text-xs font-medium">
+                    Electrical
+                    <span class="material-symbols-outlined text-sm cursor-pointer">close</span>
+</div>
+<div class="flex items-center gap-1 bg-primary text-white px-3 py-1.5 rounded-full text-xs font-medium">
+                    Main Site
+                    <span class="material-symbols-outlined text-sm cursor-pointer">close</span>
+</div>
+<div class="flex items-center gap-1 bg-slate-200 dark:bg-slate-700 px-3 py-1.5 rounded-full text-xs font-medium">
+                    Scheduled
+                    <span class="material-symbols-outlined text-sm cursor-pointer">add</span>
+</div>
+<div class="flex items-center gap-1 bg-slate-200 dark:bg-slate-700 px-3 py-1.5 rounded-full text-xs font-medium">
+                    Emergency
+                    <span class="material-symbols-outlined text-sm cursor-pointer">add</span>
+</div>
+</div>
+<!-- Section: Iconography -->
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-4">Iconography System</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-3">Outline Variants</p>
+<div class="grid grid-cols-3 gap-y-4">
+<span class="material-symbols-outlined text-2xl text-slate-600 dark:text-slate-300">bolt</span>
+<span class="material-symbols-outlined text-2xl text-slate-600 dark:text-slate-300">water_drop</span>
+<span class="material-symbols-outlined text-2xl text-slate-600 dark:text-slate-300">sensors</span>
+<span class="material-symbols-outlined text-2xl text-slate-600 dark:text-slate-300">settings</span>
+<span class="material-symbols-outlined text-2xl text-slate-600 dark:text-slate-300">warning</span>
+<span class="material-symbols-outlined text-2xl text-slate-600 dark:text-slate-300">monitoring</span>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-3">Solid Variants</p>
+<div class="grid grid-cols-3 gap-y-4">
+<span class="material-symbols-outlined text-2xl text-primary" style="font-variation-settings: 'FILL' 1">bolt</span>
+<span class="material-symbols-outlined text-2xl text-primary" style="font-variation-settings: 'FILL' 1">water_drop</span>
+<span class="material-symbols-outlined text-2xl text-primary" style="font-variation-settings: 'FILL' 1">sensors</span>
+<span class="material-symbols-outlined text-2xl text-primary" style="font-variation-settings: 'FILL' 1">settings</span>
+<span class="material-symbols-outlined text-2xl text-primary" style="font-variation-settings: 'FILL' 1">warning</span>
+<span class="material-symbols-outlined text-2xl text-primary" style="font-variation-settings: 'FILL' 1">monitoring</span>
+</div>
+</div>
+</div>
+<!-- Section: Data Visualization Colors -->
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-4">Visual Language Colors</h2>
+<div class="grid grid-cols-2 gap-3">
+<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+<div class="w-8 h-8 rounded-md bg-primary"></div>
+<div>
+<p class="text-xs font-bold">Primary Blue</p>
+<p class="text-[10px] text-slate-500">#0F7FF0</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+<div class="w-8 h-8 rounded-md bg-emerald-500"></div>
+<div>
+<p class="text-xs font-bold">Success</p>
+<p class="text-[10px] text-slate-500">#10B981</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+<div class="w-8 h-8 rounded-md bg-amber-500"></div>
+<div>
+<p class="text-xs font-bold">Warning</p>
+<p class="text-[10px] text-slate-500">#F59E0B</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+<div class="w-8 h-8 rounded-md bg-rose-500"></div>
+<div>
+<p class="text-xs font-bold">Alert/Error</p>
+<p class="text-[10px] text-slate-500">#F43F5E</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

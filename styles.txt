@@ -1,0 +1,2090 @@
+<!-- Create New Record Form -->
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nuevo Registro M9MEX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#111827", // Dark Slate/Black
+                        accent: "#be123c",  // Crimson/Red from the delete button
+                        "background-light": "#f9fafb",
+                        "background-dark": "#111827",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1f2937",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }.hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<div class="h-12 w-full flex items-center justify-between px-6 bg-white dark:bg-gray-900 z-50">
+<span class="text-sm font-semibold">12:07</span>
+<div class="flex items-center space-gap-1.5">
+<span class="material-icons-round text-[18px]">signal_cellular_alt</span>
+<span class="material-icons-round text-[18px]">wifi</span>
+<span class="material-icons-round text-[22px]">battery_full</span>
+</div>
+</div>
+<header class="sticky top-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-4 py-3 flex items-center z-40">
+<button class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors">
+<span class="material-icons-round block text-gray-700 dark:text-gray-200">arrow_back</span>
+</button>
+<h1 class="ml-2 text-lg font-bold">Nuevo M9MEX</h1>
+</header>
+<main class="flex-1 overflow-y-auto px-4 pt-6 pb-32">
+<form class="space-y-8 max-w-2xl mx-auto" id="recordForm">
+<section class="space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-icons-round text-primary dark:text-gray-400 text-xl">assignment</span>
+<h2 class="text-lg font-bold tracking-tight">Orden atendida</h2>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-gray-600 dark:text-gray-400 ml-1" for="orden">Selecciona orden</label>
+<div class="relative">
+<select class="w-full appearance-none bg-white dark:bg-card-dark border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3.5 text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="orden">
+<option value="instalacion">Instalacion</option>
+<option value="retiro">Retiro</option>
+<option value="revision">Revisión</option>
+</select>
+<span class="material-icons-round absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">expand_more</span>
+</div>
+</div>
+</section>
+<section class="space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-icons-round text-primary dark:text-gray-400 text-xl">person</span>
+<h2 class="text-lg font-bold tracking-tight">Datos generales</h2>
+</div>
+<div class="space-y-4">
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-gray-600 dark:text-gray-400 ml-1" for="usuario">Usuario</label>
+<input class="w-full bg-white dark:bg-card-dark border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3.5 text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="usuario" placeholder="Nombre completo" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-gray-600 dark:text-gray-400 ml-1" for="domicilio">Domicilio</label>
+<input class="w-full bg-white dark:bg-card-dark border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3.5 text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="domicilio" placeholder="Calle, número y colonia" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-gray-600 dark:text-gray-400 ml-1" for="observaciones">Observaciones</label>
+<textarea class="w-full bg-white dark:bg-card-dark border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3.5 text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none" id="observaciones" placeholder="Detalles adicionales..." rows="3"></textarea>
+</div>
+</div>
+</section>
+<section class="space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-icons-round text-primary dark:text-gray-400 text-xl">bolt</span>
+<h2 class="text-lg font-bold tracking-tight">S.E. consumidor / Servicio</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-gray-600 dark:text-gray-400 ml-1" for="se_consumidor">S.E. consumidor</label>
+<input class="w-full bg-white dark:bg-card-dark border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3.5 text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="se_consumidor" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-gray-600 dark:text-gray-400 ml-1" for="voltaje_primario">Voltaje primario</label>
+<input class="w-full bg-white dark:bg-card-dark border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3.5 text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="voltaje_primario" placeholder="kV" type="number"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-gray-600 dark:text-gray-400 ml-1" for="voltaje_secundario">Voltaje secundario</label>
+<input class="w-full bg-white dark:bg-card-dark border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3.5 text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="voltaje_secundario" placeholder="V" type="number"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-gray-600 dark:text-gray-400 ml-1" for="subestacion">Subestacion o agencia</label>
+<input class="w-full bg-white dark:bg-card-dark border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3.5 text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="subestacion" type="text"/>
+</div>
+<div class="space-y-1.5 md:col-span-2">
+<label class="text-sm font-semibold text-gray-600 dark:text-gray-400 ml-1" for="tarifa">Tarifa</label>
+<input class="w-full bg-white dark:bg-card-dark border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3.5 text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="tarifa" type="text"/>
+</div>
+</div>
+</section>
+</form>
+</main>
+<div class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 p-4 pb-8 z-50">
+<div class="max-w-2xl mx-auto flex flex-col gap-3">
+<button class="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-gray-200 dark:shadow-none active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-icons-round">save</span>
+                Guardar Registro
+            </button>
+<div class="h-1 w-32 bg-gray-300 dark:bg-gray-700 rounded-full mx-auto mt-2"></div>
+</div>
+</div>
+
+</body></html>
+
+<!-- Interactive Components Guide -->
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Advanced Filtering Systems</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f7ff0",
+                        "primary-dark": "#0a5eb5",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e2936",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d141c] dark:text-slate-100 min-h-screen">
+<div class="max-w-[430px] mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-2xl pb-10">
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 sticky top-0 z-50 border-b border-slate-100 dark:border-slate-800">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Filters &amp; Sorting</h2>
+</div>
+<div class="px-4">
+<div class="pt-6 pb-2">
+<h1 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Design System</h1>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Components for querying large industrial datasets.</p>
+</div>
+<h2 class="text-sm font-bold text-slate-400 uppercase tracking-wider pt-8 pb-4">01. Chip-based Filter Bar</h2>
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700/50">
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Horizontal scrollable bar for quick main-screen toggles.</p>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-sm font-medium shadow-sm shadow-blue-200 dark:shadow-none whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        All Assets
+                    </button>
+<button class="flex items-center gap-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 px-4 py-2 rounded-full text-sm font-medium text-slate-700 dark:text-slate-200 whitespace-nowrap hover:border-primary dark:hover:border-primary transition-colors">
+                        Critical
+                        <span class="bg-rose-100 text-rose-600 dark:bg-rose-900/50 dark:text-rose-400 text-[10px] px-1.5 py-0.5 rounded-full font-bold">3</span>
+</button>
+<button class="flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 px-4 py-2 rounded-full text-sm font-medium text-primary whitespace-nowrap">
+                        In Maintenance
+                        <span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+<button class="flex items-center gap-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 px-4 py-2 rounded-full text-sm font-medium text-slate-700 dark:text-slate-200 whitespace-nowrap">
+                        Offline
+                    </button>
+</div>
+</div>
+<h2 class="text-sm font-bold text-slate-400 uppercase tracking-wider pt-8 pb-4">02. Complex Filter Drawer</h2>
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
+<div class="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-800/80">
+<h3 class="font-semibold text-slate-900 dark:text-white">Filter Assets</h3>
+<span class="text-xs font-medium text-primary cursor-pointer hover:underline">Reset All</span>
+</div>
+<div class="p-5 space-y-6">
+<div>
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Asset Type</label>
+<div class="relative group">
+<div class="flex items-center w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 p-2 focus-within:ring-2 focus-within:ring-primary focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-400 text-[20px] ml-1">search</span>
+<div class="flex flex-wrap gap-1.5 ml-2 flex-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-600">
+                                        Generators
+                                        <span class="material-symbols-outlined text-[14px] cursor-pointer hover:text-red-500">close</span>
+</span>
+<input class="bg-transparent border-none text-sm p-0 focus:ring-0 placeholder:text-slate-400 w-20 dark:text-white" placeholder="Add type..." type="text"/>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[20px] cursor-pointer">expand_more</span>
+</div>
+<div class="absolute top-full left-0 w-full mt-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg shadow-xl z-20 hidden group-hover:block">
+<div class="p-1">
+<div class="flex items-center gap-2 p-2 hover:bg-slate-50 dark:hover:bg-slate-700 rounded cursor-pointer">
+<div class="w-4 h-4 border border-slate-300 rounded bg-primary border-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[12px]">check</span>
+</div>
+<span class="text-sm">Generators</span>
+</div>
+<div class="flex items-center gap-2 p-2 hover:bg-slate-50 dark:hover:bg-slate-700 rounded cursor-pointer">
+<div class="w-4 h-4 border border-slate-300 dark:border-slate-500 rounded flex items-center justify-center"></div>
+<span class="text-sm dark:text-slate-200">Transformers</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Inspection Date</label>
+<div class="grid grid-cols-2 gap-3">
+<div class="relative">
+<input class="w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm text-slate-700 dark:text-slate-200 focus:ring-primary focus:border-primary pl-9 dark:[color-scheme:dark]" type="date" value="2023-10-01"/>
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">calendar_today</span>
+</div>
+<div class="relative">
+<input class="w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm text-slate-700 dark:text-slate-200 focus:ring-primary focus:border-primary pl-9 dark:[color-scheme:dark]" type="date"/>
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">event</span>
+</div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-3">
+<label class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Pressure (PSI)</label>
+<span class="text-xs font-medium text-primary bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded">120 - 850 PSI</span>
+</div>
+<div class="relative h-10 flex items-center">
+<div class="absolute w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+<div class="absolute left-[15%] right-[25%] h-1.5 bg-primary rounded-full"></div>
+<div class="absolute left-[15%] w-6 h-6 bg-white dark:bg-slate-800 border-2 border-primary rounded-full shadow-md cursor-grab z-10 flex items-center justify-center -translate-x-1/2 hover:scale-110 transition-transform">
+<div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+</div>
+<div class="absolute right-[25%] w-6 h-6 bg-white dark:bg-slate-800 border-2 border-primary rounded-full shadow-md cursor-grab z-10 flex items-center justify-center translate-x-1/2 hover:scale-110 transition-transform">
+<div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="flex justify-between text-[10px] text-slate-400 font-medium mt-1">
+<span>0 PSI</span>
+<span>500 PSI</span>
+<span>1000 PSI</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">check</span>
+                        Apply Filters (24)
+                    </button>
+</div>
+</div>
+<h2 class="text-sm font-bold text-slate-400 uppercase tracking-wider pt-8 pb-4">03. Sorting Options</h2>
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-1">
+<label class="flex items-center justify-between p-3.5 border-b border-slate-100 dark:border-slate-700/50 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">calendar_month</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Date: Newest First</span>
+</div>
+<div class="relative flex items-center">
+<input checked="" class="peer h-5 w-5 border-2 border-slate-300 dark:border-slate-600 text-primary focus:ring-0 focus:ring-offset-0 cursor-pointer" name="sort" type="radio"/>
+<div class="absolute inset-0 bg-primary rounded-full scale-0 peer-checked:scale-50 transition-transform"></div>
+</div>
+</label>
+<label class="flex items-center justify-between p-3.5 border-b border-slate-100 dark:border-slate-700/50 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">history</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Date: Oldest First</span>
+</div>
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 border-2 border-slate-300 dark:border-slate-600 text-primary focus:ring-0 focus:ring-offset-0 cursor-pointer" name="sort" type="radio"/>
+</div>
+</label>
+<label class="flex items-center justify-between p-3.5 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">warning</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Severity: High to Low</span>
+</div>
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 border-2 border-slate-300 dark:border-slate-600 text-primary focus:ring-0 focus:ring-offset-0 cursor-pointer" name="sort" type="radio"/>
+</div>
+</label>
+</div>
+<div class="h-8"></div>
+</div>
+</div>
+
+</body></html>
+
+<!-- Service Records List -->
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Registros M9MEX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Icons+Round&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#111827", // Deep charcoal/black from the original design
+                        "background-light": "#F9FAFB",
+                        "background-dark": "#0F172A",
+                        accent: "#C2185B", // Red for destructive actions or highlights
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ios-status-bar {
+            height: env(safe-area-inset-top, 44px);
+        }
+        .ios-bottom-bar {
+            height: env(safe-area-inset-bottom, 34px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="ios-status-bar"></div>
+<div class="px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-icons-round align-middle">menu</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Registros M9MEX</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-icons-round text-slate-400">wifi</span>
+<span class="material-icons-round text-slate-400">battery_full</span>
+</div>
+</div>
+</header>
+<main class="p-4 max-w-md mx-auto space-y-6">
+<section>
+<button class="w-full bg-primary text-white py-4 px-6 rounded-2xl font-semibold flex items-center justify-center gap-2 shadow-lg shadow-primary/10 active:scale-[0.98] transition-all">
+<span class="material-icons-round">add</span>
+                Nuevo registro
+            </button>
+</section>
+<section class="space-y-4">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Registros Recientes</h2>
+<span class="text-xs font-medium text-slate-400">1 Resultado</span>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+<div class="p-5 border-b border-slate-50 dark:border-slate-700/50">
+<div class="flex justify-between items-start mb-3">
+<span class="text-xs font-bold px-2 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-md uppercase tracking-tight">
+                            INSTALACION
+                        </span>
+<span class="text-xs text-slate-400 font-medium">04 Feb 2026</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">M9MEX-20260203-0001</h3>
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm">
+<span class="material-icons-round text-sm">person</span>
+<span class="font-medium">Diego</span>
+</div>
+</div>
+<div class="p-4 bg-slate-50/50 dark:bg-slate-800/50 grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 py-3 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-600 active:scale-95 transition-all">
+<span class="material-icons-round text-lg">visibility</span>
+                        Ver detalle
+                    </button>
+<button class="flex items-center justify-center gap-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 py-3 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-600 active:scale-95 transition-all">
+<span class="material-icons-round text-lg">edit</span>
+                        Editar
+                    </button>
+</div>
+</div>
+<div class="py-12 flex flex-col items-center justify-center text-slate-400 opacity-50">
+<div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mb-3">
+<span class="material-icons-round">history</span>
+</div>
+<p class="text-sm font-medium">No hay más registros</p>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800">
+<div class="flex justify-around items-center py-2 px-6">
+<button class="flex flex-col items-center gap-1 text-primary dark:text-white">
+<span class="material-icons-round">description</span>
+<span class="text-[10px] font-bold">Registros</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-icons-round">search</span>
+<span class="text-[10px] font-medium">Buscar</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-icons-round">settings</span>
+<span class="text-[10px] font-medium">Ajustes</span>
+</button>
+</div>
+<div class="ios-bottom-bar flex justify-center items-center pb-2">
+<div class="w-32 h-1.5 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
+</div>
+</nav>
+
+</body></html>
+
+<!-- Record Details View -->
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Record Details View - M9MEX</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1a1a1a",
+                        danger: "#be123c",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ios-shadow {
+            box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen pb-32">
+<div class="h-12 w-full bg-white dark:bg-slate-900 sticky top-0 z-50 flex items-center px-4 border-b border-slate-200 dark:border-slate-800">
+<button class="p-1 -ml-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-icons text-2xl">arrow_back</span>
+</button>
+<h1 class="ml-4 font-semibold text-lg">Detalle M9MEX</h1>
+<div class="ml-auto flex gap-3">
+<span class="material-icons text-xl opacity-60">signal_cellular_alt</span>
+<span class="material-icons text-xl opacity-60">wifi</span>
+<span class="material-icons text-xl opacity-60">battery_full</span>
+</div>
+</div>
+<main class="max-w-md mx-auto p-4 space-y-6">
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl ios-shadow border border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h2 class="text-xl font-bold tracking-tight">M9MEX-20260203-0001</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Registrado el 04 de Feb, 2026</p>
+</div>
+<span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-bold rounded-full uppercase tracking-wider">
+                    Instalación
+                </span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-50 dark:border-slate-800">
+<div>
+<p class="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500 mb-1">Usuario</p>
+<p class="font-medium">Diego</p>
+</div>
+<div>
+<p class="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500 mb-1">Domicilio</p>
+<p class="font-medium">La Paz</p>
+</div>
+</div>
+<div class="mt-4">
+<p class="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500 mb-1">Observaciones</p>
+<p class="text-slate-600 dark:text-slate-300 italic">N/A</p>
+</div>
+</div>
+<section>
+<div class="flex items-center gap-2 mb-3 px-1">
+<span class="material-icons text-slate-400 dark:text-slate-500">speed</span>
+<h3 class="font-bold text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400">Datos del Medidor</h3>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-2xl ios-shadow border border-slate-100 dark:border-slate-800 overflow-hidden">
+<div class="divide-y divide-slate-50 dark:divide-slate-800">
+<div class="flex justify-between p-4">
+<span class="text-slate-500 dark:text-slate-400">No. CFE</span>
+<span class="font-semibold">—</span>
+</div>
+<div class="flex justify-between p-4">
+<span class="text-slate-500 dark:text-slate-400">No. Fábrica</span>
+<span class="font-semibold">—</span>
+</div>
+<div class="flex justify-between p-4">
+<span class="text-slate-500 dark:text-slate-400">Marca</span>
+<span class="font-semibold">WASION</span>
+</div>
+<div class="flex justify-between p-4">
+<span class="text-slate-500 dark:text-slate-400">Tipo</span>
+<span class="font-semibold">A3RAL</span>
+</div>
+<div class="flex justify-between p-4">
+<span class="text-slate-500 dark:text-slate-400">Código</span>
+<span class="font-semibold">F623</span>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center gap-2 mb-3 px-1">
+<span class="material-icons text-slate-400 dark:text-slate-500">bolt</span>
+<h3 class="font-bold text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400">Instalado / Retirado</h3>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-green-50 dark:bg-green-900/10 p-4 rounded-2xl border border-green-100 dark:border-green-900/30">
+<p class="text-[10px] font-bold text-green-700 dark:text-green-400 uppercase tracking-tighter mb-2">Instalado</p>
+<div class="space-y-2">
+<div>
+<span class="text-2xl font-bold text-green-800 dark:text-green-300">100</span>
+<span class="text-xs text-green-600 dark:text-green-500 ml-1">kWh</span>
+</div>
+<div>
+<span class="text-2xl font-bold text-green-800 dark:text-green-300">10</span>
+<span class="text-xs text-green-600 dark:text-green-500 ml-1">kW</span>
+</div>
+</div>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+<p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-tighter mb-2">Retirado</p>
+<div class="space-y-2">
+<div>
+<span class="text-2xl font-bold text-slate-400 dark:text-slate-600">—</span>
+<span class="text-xs text-slate-400 dark:text-slate-600 ml-1">kWh</span>
+</div>
+<div>
+<span class="text-2xl font-bold text-slate-400 dark:text-slate-600">—</span>
+<span class="text-xs text-slate-400 dark:text-slate-600 ml-1">kW</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<div class="fixed bottom-0 left-0 right-0 p-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 max-w-md mx-auto">
+<div class="space-y-3">
+<div class="grid grid-cols-2 gap-3">
+<button class="bg-primary text-white py-4 px-6 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-icons text-xl">edit</span>
+                    Editar
+                </button>
+<button class="bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white py-4 px-6 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-icons text-xl">picture_as_pdf</span>
+                    PDF
+                </button>
+</div>
+<button class="w-full bg-danger text-white py-4 px-6 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-icons text-xl">delete_outline</span>
+                Eliminar Registro
+            </button>
+</div>
+<div class="mt-4 mb-1 h-1 w-32 bg-slate-300 dark:bg-slate-700 rounded-full mx-auto"></div>
+</div>
+
+</body></html>
+
+<!-- Interactive Components Guide -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Interactive Components Guide</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f7ff0",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .custom-checkbox-tick {
+            --checkbox-tick-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(255,255,255)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e');
+        }
+        .custom-radio-dot {
+            --radio-dot-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(15,127,240)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%273.5%27/%3e%3c/svg%3e');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d141c] dark:text-slate-100 min-h-screen">
+<div class="max-w-[430px] mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-2xl pb-10">
+<!-- Top App Bar -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 sticky top-0 z-50 border-b border-slate-100 dark:border-slate-800">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Interactive Guide</h2>
+</div>
+<div class="px-4">
+<!-- Section: Selection Controls -->
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-6 pb-2">Selection Controls</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 pb-4">Standard checkbox and radio variants for form entries.</p>
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4 custom-checkbox-tick">
+<label class="flex gap-x-3 py-3 flex-row items-center border-b border-slate-200 dark:border-slate-700 last:border-0">
+<input checked="" class="h-6 w-6 rounded border-[#cfdbe8] border-2 bg-transparent text-primary checked:bg-primary checked:border-primary checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-[#cfdbe8] focus:outline-none" type="checkbox"/>
+<p class="text-base font-medium">Power Grid Status</p>
+</label>
+<label class="flex gap-x-3 py-3 flex-row items-center border-b border-slate-200 dark:border-slate-700 last:border-0">
+<input class="h-6 w-6 rounded border-[#cfdbe8] border-2 bg-transparent text-primary checked:bg-primary checked:border-primary checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-[#cfdbe8] focus:outline-none" type="checkbox"/>
+<p class="text-base font-medium">Water Pressure Alert</p>
+</label>
+<label class="flex gap-x-3 py-3 flex-row items-center opacity-50">
+<input class="h-6 w-6 rounded border-[#cfdbe8] border-2 bg-slate-200 text-primary focus:ring-0 focus:outline-none" disabled="" type="checkbox"/>
+<p class="text-base font-medium">Automatic Backup (Pro)</p>
+</label>
+</div>
+<!-- Section: Radio Group -->
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-4">Radio Group</h2>
+<div class="flex flex-col gap-3 custom-radio-dot">
+<label class="flex items-center gap-4 rounded-xl border border-solid border-[#cfdbe8] dark:border-slate-700 p-4 hover:border-primary transition-colors cursor-pointer">
+<input checked="" class="h-5 w-5 border-2 border-[#cfdbe8] dark:border-slate-600 bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary" name="report-freq" type="radio"/>
+<div class="flex grow flex-col"><p class="text-sm font-semibold">Daily Telemetry</p></div>
+</label>
+<label class="flex items-center gap-4 rounded-xl border border-solid border-[#cfdbe8] dark:border-slate-700 p-4 hover:border-primary transition-colors cursor-pointer">
+<input class="h-5 w-5 border-2 border-[#cfdbe8] dark:border-slate-600 bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary" name="report-freq" type="radio"/>
+<div class="flex grow flex-col"><p class="text-sm font-semibold">Weekly Summary</p></div>
+</label>
+</div>
+<!-- Section: Switches & Toggles -->
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-4">System Toggles</h2>
+<div class="flex flex-col space-y-4">
+<div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+<div>
+<p class="font-semibold text-sm">Critical Push Notifications</p>
+<p class="text-xs text-slate-500">Immediate alerts for outages</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+<div>
+<p class="font-semibold text-sm">Offline Data Caching</p>
+<p class="text-xs text-slate-500">Save reports locally</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Section: Multi-select Chips -->
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-4">Active Filters</h2>
+<div class="flex flex-wrap gap-2">
+<div class="flex items-center gap-1 bg-primary text-white px-3 py-1.5 rounded-full text-xs font-medium">
+                    Electrical
+                    <span class="material-symbols-outlined text-sm cursor-pointer">close</span>
+</div>
+<div class="flex items-center gap-1 bg-primary text-white px-3 py-1.5 rounded-full text-xs font-medium">
+                    Main Site
+                    <span class="material-symbols-outlined text-sm cursor-pointer">close</span>
+</div>
+<div class="flex items-center gap-1 bg-slate-200 dark:bg-slate-700 px-3 py-1.5 rounded-full text-xs font-medium">
+                    Scheduled
+                    <span class="material-symbols-outlined text-sm cursor-pointer">add</span>
+</div>
+<div class="flex items-center gap-1 bg-slate-200 dark:bg-slate-700 px-3 py-1.5 rounded-full text-xs font-medium">
+                    Emergency
+                    <span class="material-symbols-outlined text-sm cursor-pointer">add</span>
+</div>
+</div>
+<!-- Section: Iconography -->
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-4">Iconography System</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-3">Outline Variants</p>
+<div class="grid grid-cols-3 gap-y-4">
+<span class="material-symbols-outlined text-2xl text-slate-600 dark:text-slate-300">bolt</span>
+<span class="material-symbols-outlined text-2xl text-slate-600 dark:text-slate-300">water_drop</span>
+<span class="material-symbols-outlined text-2xl text-slate-600 dark:text-slate-300">sensors</span>
+<span class="material-symbols-outlined text-2xl text-slate-600 dark:text-slate-300">settings</span>
+<span class="material-symbols-outlined text-2xl text-slate-600 dark:text-slate-300">warning</span>
+<span class="material-symbols-outlined text-2xl text-slate-600 dark:text-slate-300">monitoring</span>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-3">Solid Variants</p>
+<div class="grid grid-cols-3 gap-y-4">
+<span class="material-symbols-outlined text-2xl text-primary" style="font-variation-settings: 'FILL' 1">bolt</span>
+<span class="material-symbols-outlined text-2xl text-primary" style="font-variation-settings: 'FILL' 1">water_drop</span>
+<span class="material-symbols-outlined text-2xl text-primary" style="font-variation-settings: 'FILL' 1">sensors</span>
+<span class="material-symbols-outlined text-2xl text-primary" style="font-variation-settings: 'FILL' 1">settings</span>
+<span class="material-symbols-outlined text-2xl text-primary" style="font-variation-settings: 'FILL' 1">warning</span>
+<span class="material-symbols-outlined text-2xl text-primary" style="font-variation-settings: 'FILL' 1">monitoring</span>
+</div>
+</div>
+</div>
+<!-- Section: Data Visualization Colors -->
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-4">Visual Language Colors</h2>
+<div class="grid grid-cols-2 gap-3">
+<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+<div class="w-8 h-8 rounded-md bg-primary"></div>
+<div>
+<p class="text-xs font-bold">Primary Blue</p>
+<p class="text-[10px] text-slate-500">#0F7FF0</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+<div class="w-8 h-8 rounded-md bg-emerald-500"></div>
+<div>
+<p class="text-xs font-bold">Success</p>
+<p class="text-[10px] text-slate-500">#10B981</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+<div class="w-8 h-8 rounded-md bg-amber-500"></div>
+<div>
+<p class="text-xs font-bold">Warning</p>
+<p class="text-[10px] text-slate-500">#F59E0B</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+<div class="w-8 h-8 rounded-md bg-rose-500"></div>
+<div>
+<p class="text-xs font-bold">Alert/Error</p>
+<p class="text-[10px] text-slate-500">#F43F5E</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>
+
+<!-- Design System Guidelines -->
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Design System - Utility FSM</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#2563eb", // Primary Blue
+              "background-light": "#f8fafc",
+              "background-dark": "#0f172a",
+              success: "#10b981",
+              error: "#ef4444",
+              warning: "#f59e0b",
+              slate: {
+                50: "#f8fafc",
+                100: "#f1f5f9",
+                200: "#e2e8f0",
+                300: "#cbd5e1",
+                400: "#94a3b8",
+                500: "#64748b",
+                600: "#475569",
+                700: "#334155",
+                800: "#1e293b",
+                900: "#0f172a",
+              }
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.75rem",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .ios-status-bar { height: 44px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen pb-12">
+<div class="ios-status-bar flex justify-between items-end px-6 pb-2 sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-50">
+<span class="text-sm font-semibold">12:05</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-icons-round text-base">signal_cellular_alt</span>
+<span class="material-icons-round text-base">wifi</span>
+<span class="material-icons-round text-base">battery_full</span>
+</div>
+</div>
+<header class="px-4 pt-4 pb-6 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4 mb-2">
+<button class="p-2 -ml-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-icons-round">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold">Design System</h1>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Utility Field Service Management Styleguide</p>
+</header>
+<main class="p-4 space-y-10">
+<section>
+<h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 px-1">Typography (Inter Sans)</h2>
+<div class="space-y-4 bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800">
+<div>
+<p class="text-3xl font-bold">Display Header</p>
+<p class="text-xs text-slate-400">Bold 30px / Inter</p>
+</div>
+<div>
+<p class="text-xl font-semibold">Section Title</p>
+<p class="text-xs text-slate-400">Semibold 20px / Inter</p>
+</div>
+<div>
+<p class="text-base">Body Regular text for descriptions.</p>
+<p class="text-xs text-slate-400">Regular 16px / Inter</p>
+</div>
+<div>
+<p class="text-sm text-slate-500">Secondary caption text for details.</p>
+<p class="text-xs text-slate-400">Regular 14px / Inter</p>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 px-1">Color Palette</h2>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-primary p-4 rounded-xl text-white shadow-sm">
+<p class="font-bold text-sm">Primary Blue</p>
+<p class="text-[10px] opacity-80">#2563EB</p>
+</div>
+<div class="bg-slate-800 dark:bg-slate-700 p-4 rounded-xl text-white shadow-sm">
+<p class="font-bold text-sm">Slate Gray</p>
+<p class="text-[10px] opacity-80">#1E293B</p>
+</div>
+<div class="bg-success p-4 rounded-xl text-white shadow-sm">
+<p class="font-bold text-sm">Success Green</p>
+<p class="text-[10px] opacity-80">#10B981</p>
+</div>
+<div class="bg-warning p-4 rounded-xl text-white shadow-sm">
+<p class="font-bold text-sm">Warning Amber</p>
+<p class="text-[10px] opacity-80">#F59E0B</p>
+</div>
+<div class="bg-error p-4 rounded-xl text-white shadow-sm">
+<p class="font-bold text-sm">Error Red</p>
+<p class="text-[10px] opacity-80">#EF4444</p>
+</div>
+<div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-4 rounded-xl shadow-sm">
+<p class="font-bold text-sm">Surface Light</p>
+<p class="text-[10px] text-slate-400">#FFFFFF</p>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 px-1">Buttons</h2>
+<div class="space-y-3">
+<button class="w-full bg-primary hover:bg-blue-700 text-white font-semibold py-4 rounded-xl shadow-lg shadow-blue-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-icons-round text-lg">add</span>
+                    Primary Button
+                </button>
+<button class="w-full bg-slate-800 dark:bg-slate-100 hover:bg-slate-900 dark:hover:bg-white text-white dark:text-slate-900 font-semibold py-4 rounded-xl active:scale-[0.98] transition-all">
+                    Secondary Button
+                </button>
+<button class="w-full bg-error hover:bg-red-700 text-white font-semibold py-4 rounded-xl active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-icons-round text-lg">delete_outline</span>
+                    Danger Action
+                </button>
+<button class="w-full bg-transparent border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold py-4 rounded-xl active:scale-[0.98] transition-all">
+                    Ghost Outline
+                </button>
+</div>
+</section>
+<section>
+<h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 px-1">Input Fields</h2>
+<div class="space-y-6">
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Usuario</label>
+<input class="w-full px-4 py-3.5 rounded-xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="Ingrese nombre de usuario" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Domicilio</label>
+<div class="relative">
+<input class="w-full pl-4 pr-10 py-3.5 rounded-xl border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary transition-all" type="text" value="Av. La Paz #123, Col. Centro"/>
+<span class="material-icons-round absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">location_on</span>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-error">Código de Medidor</label>
+<input class="w-full px-4 py-3.5 rounded-xl border-error bg-red-50 dark:bg-red-900/10 focus:ring-0 text-error" type="text" value="X-99"/>
+<p class="text-xs text-error font-medium">El formato del código es inválido.</p>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Tipo de Orden</label>
+<div class="relative">
+<select class="w-full px-4 py-3.5 rounded-xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 appearance-none focus:ring-2 focus:ring-primary transition-all">
+<option>Instalación</option>
+<option>Mantenimiento</option>
+<option>Retiro</option>
+</select>
+<span class="material-icons-round absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 px-1">Card Component</h2>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-xs font-bold text-primary mb-1 uppercase tracking-wider">M9MEX-20260203</p>
+<h3 class="font-bold text-lg">Instalación Residencial</h3>
+</div>
+<span class="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Completado</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-0.5">
+<p class="text-[10px] text-slate-400 font-bold uppercase">Usuario</p>
+<p class="text-sm font-medium">Diego Velázquez</p>
+</div>
+<div class="space-y-0.5">
+<p class="text-[10px] text-slate-400 font-bold uppercase">Medidor</p>
+<p class="text-sm font-medium">W394-A3RAL</p>
+</div>
+</div>
+<div class="pt-4 flex gap-2">
+<button class="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-sm font-semibold py-2.5 rounded-lg active:opacity-70 transition-opacity">
+                        Ver Detalle
+                    </button>
+<button class="flex-1 bg-primary/10 text-primary text-sm font-semibold py-2.5 rounded-lg active:opacity-70 transition-opacity">
+                        Editar
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<div class="fixed bottom-1 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
+<script>
+        // Optional: Toggle dark mode based on system preference
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
+</body></html>
+
+<!-- Interactive Components Guide -->
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Empty States &amp; Skeleton Loaders</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f7ff0",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d141c] dark:text-slate-100 min-h-screen">
+<div class="max-w-[430px] mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-2xl pb-10">
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 sticky top-0 z-50 border-b border-slate-100 dark:border-slate-800">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Empty States &amp; Loaders</h2>
+</div>
+<div class="px-4">
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-6 pb-2">Empty States</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 pb-6">Standard patterns for null results, connectivity issues, and permission blocks.</p>
+<div class="flex flex-col items-center justify-center p-8 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-dashed border-slate-200 dark:border-slate-700 mb-4">
+<svg class="w-24 h-24 text-slate-300 dark:text-slate-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<circle cx="11" cy="11" r="8" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></circle>
+<path d="M21 21L16.65 16.65" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+<path class="text-slate-400 dark:text-slate-500" d="M8 11H14" stroke-dasharray="2 2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+<h3 class="text-base font-bold text-slate-900 dark:text-slate-100">No results found</h3>
+<p class="text-xs text-slate-500 mt-1 mb-4 text-center max-w-[200px]">We couldn't find any items matching your current filters.</p>
+<button class="text-sm font-semibold text-primary hover:text-blue-600 transition-colors">Clear All Filters</button>
+</div>
+<div class="flex flex-col items-center justify-center p-8 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm mb-4">
+<div class="relative mb-4">
+<svg class="w-20 h-20 text-slate-200 dark:text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+<div class="absolute bottom-0 right-0 bg-white dark:bg-slate-800 rounded-full p-1 shadow-sm">
+<span class="material-symbols-outlined text-amber-500 text-xl">wifi_off</span>
+</div>
+</div>
+<h3 class="text-base font-bold text-slate-900 dark:text-slate-100">Connection Lost</h3>
+<p class="text-xs text-slate-500 mt-1 mb-5 text-center">Check your network settings and try again.</p>
+<button class="w-full py-2.5 bg-primary hover:bg-blue-600 text-white text-sm font-medium rounded-lg transition-colors shadow-sm shadow-blue-200 dark:shadow-none">Retry Connection</button>
+</div>
+<div class="flex flex-row items-center gap-4 p-5 bg-rose-50 dark:bg-rose-900/20 rounded-xl border border-rose-100 dark:border-rose-900/50">
+<div class="bg-white dark:bg-slate-800 p-2.5 rounded-full shrink-0">
+<span class="material-symbols-outlined text-rose-500 text-2xl">lock_person</span>
+</div>
+<div class="flex-1">
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Access Restricted</h3>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Admin clearance required for this dataset.</p>
+</div>
+<button class="text-xs font-semibold text-rose-600 dark:text-rose-400 shrink-0">Request</button>
+</div>
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-2">Skeleton Loaders</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 pb-6">Loading placeholders to reduce perceived latency.</p>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 mb-4">
+<div class="flex justify-between items-center mb-3">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Card Variant</span>
+<span class="text-[10px] text-slate-400">Loading...</span>
+</div>
+<div class="flex gap-4">
+<div class="w-20 h-20 bg-slate-100 dark:bg-slate-800 rounded-lg shrink-0"></div>
+<div class="flex-1 flex flex-col justify-center space-y-3">
+<div class="h-4 bg-slate-100 dark:bg-slate-800 rounded w-3/4"></div>
+<div class="space-y-1.5">
+<div class="h-2.5 bg-slate-100 dark:bg-slate-800 rounded w-full"></div>
+<div class="h-2.5 bg-slate-100 dark:bg-slate-800 rounded w-2/3"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
+<div class="flex justify-between items-center mb-4">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">List Variant</span>
+<span class="text-[10px] text-slate-400">Fetching Data...</span>
+</div>
+<div class="space-y-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 shrink-0"></div>
+<div class="flex-1 space-y-2">
+<div class="h-3 bg-slate-100 dark:bg-slate-800 rounded w-1/3"></div>
+<div class="h-2 bg-slate-100 dark:bg-slate-800 rounded w-1/4"></div>
+</div>
+<div class="w-16 h-6 rounded bg-slate-100 dark:bg-slate-800 shrink-0"></div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 shrink-0"></div>
+<div class="flex-1 space-y-2">
+<div class="h-3 bg-slate-100 dark:bg-slate-800 rounded w-1/2"></div>
+<div class="h-2 bg-slate-100 dark:bg-slate-800 rounded w-1/5"></div>
+</div>
+<div class="w-16 h-6 rounded bg-slate-100 dark:bg-slate-800 shrink-0"></div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 shrink-0"></div>
+<div class="flex-1 space-y-2">
+<div class="h-3 bg-slate-100 dark:bg-slate-800 rounded w-2/5"></div>
+<div class="h-2 bg-slate-100 dark:bg-slate-800 rounded w-1/3"></div>
+</div>
+<div class="w-16 h-6 rounded bg-slate-100 dark:bg-slate-800 shrink-0"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-8">
+<div class="bg-primary/10 border border-primary/20 rounded-lg p-3 text-center">
+<span class="material-symbols-outlined text-primary text-2xl mb-1">hourglass_empty</span>
+<p class="text-[10px] font-bold text-primary uppercase">During Load</p>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-3 text-center">
+<span class="material-symbols-outlined text-slate-400 text-2xl mb-1">error_outline</span>
+<p class="text-[10px] font-bold text-slate-400 uppercase">On Failure</p>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>
+
+<!-- Data Tables and Charts Standard -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Data Tables and Charts Standard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f7ff0",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                        "success": "#22c55e",
+                        "warning": "#f59e0b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .zebra-row:nth-child(even) { background-color: rgba(15, 127, 240, 0.03); }
+        .dark .zebra-row:nth-child(even) { background-color: rgba(255, 255, 255, 0.03); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-30 bg-background-light dark:bg-background-dark/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center p-4 justify-between max-w-lg mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined cursor-pointer">arrow_back_ios</span>
+<h1 class="text-lg font-bold leading-tight tracking-tight">Utility Analytics</h1>
+</div>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-primary">
+<span class="material-symbols-outlined">ios_share</span>
+</button>
+</div>
+</div>
+<main class="max-w-lg mx-auto pb-24">
+<!-- Timeframe Segmented Control -->
+<div class="px-4 py-4">
+<div class="flex h-11 items-center justify-center rounded-xl bg-slate-200/50 dark:bg-slate-800 p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm text-slate-500 dark:text-slate-400 has-[:checked]:text-primary text-sm font-semibold transition-all">
+<span>Week</span>
+<input class="hidden" name="timeframe" type="radio" value="Week"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm text-slate-500 dark:text-slate-400 has-[:checked]:text-primary text-sm font-semibold transition-all">
+<span>Month</span>
+<input checked="" class="hidden" name="timeframe" type="radio" value="Month"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm text-slate-500 dark:text-slate-400 has-[:checked]:text-primary text-sm font-semibold transition-all">
+<span>Year</span>
+<input class="hidden" name="timeframe" type="radio" value="Year"/>
+</label>
+</div>
+</div>
+<!-- Visual Analytics Cards -->
+<div class="px-4 space-y-4">
+<!-- Bar Chart: Monthly Usage -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Monthly Usage</p>
+<p class="text-2xl font-bold tracking-tight">450.8 <span class="text-sm font-normal text-slate-400">kWh</span></p>
+</div>
+<div class="flex items-center gap-1 text-success bg-success/10 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="text-xs font-bold">5.2%</span>
+</div>
+</div>
+<div class="grid grid-cols-6 gap-3 items-end h-32 px-1">
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-sm relative overflow-hidden h-[40%]">
+<div class="absolute bottom-0 w-full bg-primary/40 h-full"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">JAN</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-sm relative overflow-hidden h-[75%]">
+<div class="absolute bottom-0 w-full bg-primary/40 h-full"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">FEB</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-sm relative overflow-hidden h-[60%]">
+<div class="absolute bottom-0 w-full bg-primary/40 h-full"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">MAR</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-sm relative overflow-hidden h-[90%]">
+<div class="absolute bottom-0 w-full bg-primary/40 h-full"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">APR</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-sm relative overflow-hidden h-[55%]">
+<div class="absolute bottom-0 w-full bg-primary/40 h-full"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">MAY</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-sm relative overflow-hidden h-[100%]">
+<div class="absolute bottom-0 w-full bg-primary h-full"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">JUN</span>
+</div>
+</div>
+</div>
+<!-- Line Chart: Trends -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Usage Trends</p>
+<p class="text-2xl font-bold tracking-tight">+12.4% <span class="text-sm font-normal text-slate-400">vs prev</span></p>
+</div>
+<div class="flex items-center gap-1 text-warning bg-warning/10 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-sm">warning</span>
+<span class="text-xs font-bold">High Peak</span>
+</div>
+</div>
+<div class="relative h-32 w-full mt-4">
+<svg class="w-full h-full overflow-visible" viewbox="0 0 400 100">
+<defs>
+<lineargradient id="lineGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#0f7ff0;stop-opacity:0.2"></stop>
+<stop offset="100%" style="stop-color:#0f7ff0;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,80 Q50,70 100,40 T200,50 T300,10 T400,30 L400,100 L0,100 Z" fill="url(#lineGrad)"></path>
+<path d="M0,80 Q50,70 100,40 T200,50 T300,10 T400,30" fill="none" stroke="#0f7ff0" stroke-linecap="round" stroke-width="3"></path>
+<circle cx="300" cy="10" fill="#0f7ff0" r="4" stroke="white" stroke-width="2"></circle>
+</svg>
+<div class="flex justify-between mt-2">
+<span class="text-[10px] font-bold text-slate-400 uppercase">Mon</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase">Wed</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase">Fri</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase">Sun</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section Header -->
+<div class="px-4 mt-8 flex items-center justify-between">
+<h2 class="text-xl font-bold tracking-tight">Consumption History</h2>
+<button class="text-primary text-sm font-bold flex items-center gap-1">
+                Filter <span class="material-symbols-outlined text-sm">filter_list</span>
+</button>
+</div>
+<!-- Search Bar Component -->
+<div class="px-4 py-4">
+<label class="flex flex-col w-full">
+<div class="flex w-full items-stretch rounded-xl h-12 bg-slate-200/50 dark:bg-slate-800">
+<div class="text-slate-400 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 px-3 text-base" placeholder="Search invoices or usage..."/>
+</div>
+</label>
+</div>
+<!-- Data Table Section -->
+<div class="px-4">
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="overflow-x-auto no-scrollbar">
+<table class="w-full text-left border-collapse min-w-[500px]">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
+<div class="flex items-center gap-1 cursor-pointer">
+                                        Date <span class="material-symbols-outlined text-sm">unfold_more</span>
+</div>
+</th>
+<th class="px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Service</th>
+<th class="px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Usage</th>
+<th class="px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">
+<div class="flex items-center justify-end gap-1 cursor-pointer">
+                                        Cost <span class="material-symbols-outlined text-sm">arrow_drop_down</span>
+</div>
+</th>
+<th class="px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Table Row 1 -->
+<tr class="zebra-row hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors">
+<td class="px-4 py-4 text-sm font-medium">Jun 12, 2024</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-sm">Electricity</span>
+</div>
+</td>
+<td class="px-4 py-4 text-sm text-right font-mono">14.2 kWh</td>
+<td class="px-4 py-4 text-sm text-right font-bold">$12.50</td>
+<td class="px-4 py-4 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-success/10 text-success">Paid</span>
+</td>
+</tr>
+<!-- Table Row 2 -->
+<tr class="zebra-row hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors">
+<td class="px-4 py-4 text-sm font-medium">Jun 11, 2024</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-blue-400"></div>
+<span class="text-sm">Water</span>
+</div>
+</td>
+<td class="px-4 py-4 text-sm text-right font-mono">0.8 m³</td>
+<td class="px-4 py-4 text-sm text-right font-bold">$4.20</td>
+<td class="px-4 py-4 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-warning/10 text-warning">Pending</span>
+</td>
+</tr>
+<!-- Table Row 3 -->
+<tr class="zebra-row hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors">
+<td class="px-4 py-4 text-sm font-medium">Jun 10, 2024</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-sm">Electricity</span>
+</div>
+</td>
+<td class="px-4 py-4 text-sm text-right font-mono">18.5 kWh</td>
+<td class="px-4 py-4 text-sm text-right font-bold">$16.85</td>
+<td class="px-4 py-4 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-success/10 text-success">Paid</span>
+</td>
+</tr>
+<!-- Table Row 4 -->
+<tr class="zebra-row hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors">
+<td class="px-4 py-4 text-sm font-medium">Jun 09, 2024</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-amber-500"></div>
+<span class="text-sm">Gas</span>
+</div>
+</td>
+<td class="px-4 py-4 text-sm text-right font-mono">2.1 m³</td>
+<td class="px-4 py-4 text-sm text-right font-bold">$22.10</td>
+<td class="px-4 py-4 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-success/10 text-success">Paid</span>
+</td>
+</tr>
+<!-- Table Row 5 -->
+<tr class="zebra-row hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors">
+<td class="px-4 py-4 text-sm font-medium">Jun 08, 2024</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-sm">Electricity</span>
+</div>
+</td>
+<td class="px-4 py-4 text-sm text-right font-mono">15.0 kWh</td>
+<td class="px-4 py-4 text-sm text-right font-bold">$13.20</td>
+<td class="px-4 py-4 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-100 dark:bg-slate-800 text-slate-400">Void</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Component -->
+<div class="flex flex-col sm:flex-row items-center justify-between px-4 py-4 gap-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/30">
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">
+                        Showing <span class="text-slate-900 dark:text-white">1-5</span> of 24 entries
+                    </p>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center h-8 w-8 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-500 disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<div class="flex items-center gap-1">
+<button class="h-8 w-8 rounded-lg bg-primary text-white text-xs font-bold">1</button>
+<button class="h-8 w-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-medium">2</button>
+<button class="h-8 w-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-medium">3</button>
+<span class="text-slate-400">...</span>
+<button class="h-8 w-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-medium">5</button>
+</div>
+<button class="flex items-center justify-center h-8 w-8 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-500">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (iOS style) -->
+<div class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 pb-safe z-40">
+<div class="max-w-lg mx-auto flex justify-around p-3">
+<div class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined fill-[1]">bar_chart</span>
+<span class="text-[10px] font-bold">Insights</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-bold">Billing</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Account</span>
+</div>
+</div>
+</div>
+</body></html>
+
+<!-- Interactive Components Guide -->
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Motion and Haptic Guidelines</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f7ff0",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }.curve-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 0;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d141c] dark:text-slate-100 min-h-screen">
+<div class="max-w-[430px] mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-2xl pb-10">
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 sticky top-0 z-50 border-b border-slate-100 dark:border-slate-800">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Motion &amp; Haptics</h2>
+</div>
+<div class="px-4">
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-6 pb-2">Transition Physics</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 pb-4">Standard motion curves for fluid UI navigation.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-100 dark:border-slate-800">
+<div class="h-16 w-full border-b border-l border-slate-300 dark:border-slate-600 mb-3 relative flex items-end">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 60">
+<path d="M0,60 C20,60 40,10 60,10 S80,25 100,20" fill="none" stroke="#0f7ff0" stroke-linecap="round" stroke-width="2.5"></path>
+</svg>
+</div>
+<p class="text-sm font-semibold">Spring (Damping)</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-wide mt-1">For Overlays</p>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-100 dark:border-slate-800">
+<div class="h-16 w-full border-b border-l border-slate-300 dark:border-slate-600 mb-3 relative flex items-end">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 60">
+<path d="M0,60 C40,60 60,10 100,10" fill="none" stroke="#64748b" stroke-linecap="round" stroke-width="2.5"></path>
+</svg>
+</div>
+<p class="text-sm font-semibold">Ease-In-Out</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-wide mt-1">Standard Nav</p>
+</div>
+</div>
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-4">Interaction Depth</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 pb-4">Elevation changes simulate physical button presses.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col items-center gap-3 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-dashed border-slate-300 dark:border-slate-700">
+<button class="bg-primary text-white px-6 py-2.5 rounded-lg shadow-lg font-medium text-sm transform transition-all">
+                        Submit
+                    </button>
+<p class="text-xs font-medium text-slate-400">Resting (z=2)</p>
+</div>
+<div class="flex flex-col items-center gap-3 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-dashed border-slate-300 dark:border-slate-700">
+<button class="bg-[#0b6bcb] text-white/90 px-6 py-2.5 rounded-lg shadow-inner font-medium text-sm transform scale-95 origin-center">
+                        Submit
+                    </button>
+<p class="text-xs font-medium text-slate-400">Pressed (z=0)</p>
+</div>
+</div>
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-4">Card Expansion</h2>
+<div class="relative pl-6 border-l-2 border-slate-200 dark:border-slate-700 space-y-6">
+<div class="relative">
+<div class="absolute -left-[31px] top-3 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-600 border-2 border-white dark:border-slate-900"></div>
+<div class="bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm w-3/4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">expand_more</span>
+<span class="text-sm font-semibold text-slate-600 dark:text-slate-300">Work Order #4920</span>
+</div>
+</div>
+<p class="text-[10px] text-slate-400 mt-1 uppercase tracking-wider font-bold">Collapsed State</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[31px] top-3 w-4 h-4 rounded-full bg-primary border-2 border-white dark:border-slate-900 shadow-sm ring-2 ring-blue-100 dark:ring-blue-900/30"></div>
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-primary/30 shadow-md w-full">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Work Order #4920</span>
+<span class="material-symbols-outlined text-primary text-lg">expand_less</span>
+</div>
+<div class="h-1 w-full bg-slate-100 dark:bg-slate-700 rounded-full mb-2 overflow-hidden">
+<div class="h-full w-2/3 bg-primary rounded-full"></div>
+</div>
+<p class="text-xs text-slate-500">Maintenance required on Unit 4B. Check pressure valves.</p>
+</div>
+<p class="text-[10px] text-primary mt-1 uppercase tracking-wider font-bold">Expanded State</p>
+</div>
+</div>
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-4">Haptic Feedback</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 pb-4">Tactile patterns for noisy industrial environments.</p>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between p-4 bg-emerald-50/50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-900/30 rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-800 flex items-center justify-center text-emerald-600 dark:text-emerald-200">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<p class="font-bold text-sm text-slate-800 dark:text-slate-100">Task Complete</p>
+<p class="text-xs text-slate-500">Pattern: Double Light Pulse</p>
+</div>
+</div>
+<div class="flex gap-0.5 items-end h-6">
+<div class="w-1 h-3 bg-emerald-400 rounded-full"></div>
+<div class="w-1 h-5 bg-emerald-400 rounded-full"></div>
+<div class="w-1 h-2 bg-emerald-200/50 rounded-full"></div>
+<div class="w-1 h-3 bg-emerald-400 rounded-full"></div>
+<div class="w-1 h-4 bg-emerald-400 rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-rose-50/50 dark:bg-rose-900/10 border border-rose-100 dark:border-rose-900/30 rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-800 flex items-center justify-center text-rose-600 dark:text-rose-200">
+<span class="material-symbols-outlined">error</span>
+</div>
+<div>
+<p class="font-bold text-sm text-slate-800 dark:text-slate-100">Critical Alert</p>
+<p class="text-xs text-slate-500">Pattern: Heavy Long Vibration</p>
+</div>
+</div>
+<div class="flex gap-0.5 items-end h-6">
+<div class="w-1.5 h-6 bg-rose-500 rounded-full"></div>
+<div class="w-1.5 h-6 bg-rose-500 rounded-full"></div>
+<div class="w-1.5 h-6 bg-rose-500 rounded-full"></div>
+<div class="w-1.5 h-6 bg-rose-500 rounded-full"></div>
+<div class="w-1.5 h-6 bg-rose-500 rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">touch_app</span>
+</div>
+<div>
+<p class="font-bold text-sm text-slate-800 dark:text-slate-100">Selection Change</p>
+<p class="text-xs text-slate-500">Pattern: Single Sharp Tick</p>
+</div>
+</div>
+<div class="flex gap-0.5 items-end h-6 w-[50px] justify-center">
+<div class="w-1 h-4 bg-slate-400 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>
+
+<!-- Interactive Components Guide -->
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Multimedia &amp; File Components</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f7ff0",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            min-height: max(884px, 100dvh);
+        }@keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        .recording-pulse::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: #ef4444;
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d141c] dark:text-slate-100 min-h-screen">
+<div class="max-w-[430px] mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-2xl pb-10">
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 sticky top-0 z-50 border-b border-slate-100 dark:border-slate-800">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Multimedia Files</h2>
+</div>
+<div class="px-4">
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pt-6 pb-2">Site Photos</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 pb-4">Capture visual evidence of field equipment.</p>
+<div class="grid grid-cols-3 gap-3 mb-2">
+<div class="relative aspect-square rounded-xl overflow-hidden group bg-slate-100 shadow-sm">
+<img alt="Industrial pipes" class="w-full h-full object-cover transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWicm45NFHh1tQcHoBPy7sHUTtdjxug2ruIs1waWNAu7R4OV7KX8Z2KYsdRKkrJcKc3ipTNVC4O3xgiQ1H-DqdUaGQ620DsXQA6BOylaqGa1Rb696SCJY7L2s2W1e-wsQByMGoH47gvBCtT5GeDzc6nGDZi0FDtkgZehbYTk61FmF_strNFgwUTgslWoPeSzFNZq88w_sCB1R695v48qpj4EPRtI7SRTy64n2Tw0OelPQ8zoF3ATROBdf2LAqGH5QsKy7-6cvVS37j"/>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+<button class="absolute top-1.5 right-1.5 bg-black/60 hover:bg-red-500 text-white rounded-full p-1 backdrop-blur-sm transition-all shadow-sm">
+<span class="material-symbols-outlined text-[14px] block font-bold">close</span>
+</button>
+</div>
+<div class="relative aspect-square rounded-xl overflow-hidden group bg-slate-100 shadow-sm">
+<img alt="Worker" class="w-full h-full object-cover transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjr-wj_ZV6mSzNoSfV_-ufPF70Ka68ju77tyBjjfHP2Oy1h4jybbhmWAGnqq3qacOPfGDOTrVXe9Zr2p4rW-ZtrvtVhTT3issh_eaxhxcA_aipkg1bz2hj1I23ggd2xSoIvA710jPbksYPxMBPasXyjVIRnViJ3kaB46AP348UIi7h8gmeHPQVnzJuLxy-nYiAFbzNpqhb-Opsror_rwcXqnNwxxjQrdR7Uk4hT6VB6OfJyZJBnfuIsAHrT3EXDZ13O6ejDrn3Pi5_"/>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+<button class="absolute top-1.5 right-1.5 bg-black/60 hover:bg-red-500 text-white rounded-full p-1 backdrop-blur-sm transition-all shadow-sm">
+<span class="material-symbols-outlined text-[14px] block font-bold">close</span>
+</button>
+</div>
+<button class="aspect-square rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800/30 flex flex-col items-center justify-center text-slate-400 hover:text-primary hover:border-primary hover:bg-primary/5 transition-all group">
+<div class="bg-white dark:bg-slate-700 rounded-full p-2 mb-1 shadow-sm group-hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-2xl">add_a_photo</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-wide">Upload</span>
+</button>
+</div>
+<div class="flex justify-end mb-6">
+<span class="text-xs font-medium text-slate-400">2 of 10 photos added</span>
+</div>
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pb-4 border-t border-slate-100 dark:border-slate-800 pt-6">Documents</h2>
+<div class="flex flex-col gap-3">
+<div class="flex items-center p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 transition-colors group">
+<div class="relative w-12 h-12 rounded-lg bg-white dark:bg-slate-700 flex items-center justify-center shrink-0 shadow-sm border border-slate-100 dark:border-slate-600">
+<span class="material-symbols-outlined text-red-500 text-2xl">picture_as_pdf</span>
+<div class="absolute -bottom-1 -right-1 bg-slate-900 text-white text-[8px] font-bold px-1 rounded">PDF</div>
+</div>
+<div class="ml-3 flex-1 min-w-0">
+<p class="text-sm font-semibold truncate text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors">Safety_Protocol_v2.pdf</p>
+<p class="text-xs text-slate-500 mt-0.5 flex items-center gap-1">
+<span>2.4 MB</span>
+<span class="w-0.5 h-0.5 bg-slate-400 rounded-full"></span>
+<span>Added today</span>
+</p>
+</div>
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-white dark:hover:bg-slate-700 rounded-lg transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex items-center p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 transition-colors group">
+<div class="relative w-12 h-12 rounded-lg bg-white dark:bg-slate-700 flex items-center justify-center shrink-0 shadow-sm border border-slate-100 dark:border-slate-600">
+<span class="material-symbols-outlined text-emerald-600 text-2xl">table_view</span>
+<div class="absolute -bottom-1 -right-1 bg-slate-900 text-white text-[8px] font-bold px-1 rounded">XLS</div>
+</div>
+<div class="ml-3 flex-1 min-w-0">
+<p class="text-sm font-semibold truncate text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors">Maintenance_Log_2023.xlsx</p>
+<p class="text-xs text-slate-500 mt-0.5 flex items-center gap-1">
+<span>845 KB</span>
+<span class="w-0.5 h-0.5 bg-slate-400 rounded-full"></span>
+<span>Added yesterday</span>
+</p>
+</div>
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-white dark:hover:bg-slate-700 rounded-lg transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<h2 class="text-[20px] font-bold leading-tight tracking-[-0.015em] pb-4 border-t border-slate-100 dark:border-slate-800 pt-8">Voice Notes</h2>
+<div class="bg-[#101922] text-white rounded-2xl p-5 shadow-xl relative overflow-hidden mb-4">
+<div class="absolute top-0 right-0 w-40 h-40 bg-primary/20 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
+<div class="flex items-center justify-between mb-8 relative z-10">
+<div class="flex items-center gap-3 bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
+<div class="relative w-2 h-2">
+<div class="w-2 h-2 rounded-full bg-red-500 recording-pulse"></div>
+</div>
+<span class="text-[10px] font-bold tracking-wider uppercase text-slate-200">Recording</span>
+</div>
+<span class="font-mono text-lg font-bold tracking-wider tabular-nums">00:04:12</span>
+</div>
+<div class="flex items-center justify-between h-12 gap-[3px] mb-8 relative z-10 px-2">
+<div class="w-1.5 bg-slate-600 rounded-full h-3"></div>
+<div class="w-1.5 bg-slate-600 rounded-full h-4"></div>
+<div class="w-1.5 bg-slate-500 rounded-full h-6"></div>
+<div class="w-1.5 bg-slate-500 rounded-full h-4"></div>
+<div class="w-1.5 bg-primary/60 rounded-full h-8"></div>
+<div class="w-1.5 bg-primary rounded-full h-10"></div>
+<div class="w-1.5 bg-primary rounded-full h-6"></div>
+<div class="w-1.5 bg-primary/80 rounded-full h-12 animate-pulse"></div>
+<div class="w-1.5 bg-primary rounded-full h-8"></div>
+<div class="w-1.5 bg-primary/60 rounded-full h-5"></div>
+<div class="w-1.5 bg-primary/40 rounded-full h-3"></div>
+<div class="w-1.5 bg-slate-700 rounded-full h-2"></div>
+<div class="w-1.5 bg-slate-800 rounded-full h-1"></div>
+<div class="w-1.5 bg-slate-800 rounded-full h-1"></div>
+</div>
+<div class="flex justify-between items-center relative z-10 px-4">
+<button class="text-slate-400 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full">
+<span class="material-symbols-outlined">delete</span>
+</button>
+<button class="w-16 h-16 bg-white text-primary rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1">stop</span>
+</button>
+<button class="text-slate-400 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full">
+<span class="material-symbols-outlined">check</span>
+</button>
+</div>
+</div>
+<div class="p-3 border border-slate-200 dark:border-slate-700 rounded-xl flex items-center gap-3 bg-white dark:bg-slate-800 shadow-sm">
+<button class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-primary hover:text-white flex items-center justify-center text-primary dark:text-slate-300 transition-colors shrink-0">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1">play_arrow</span>
+</button>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<p class="text-xs font-bold text-slate-700 dark:text-slate-300">Incident_Report_402.mp3</p>
+<span class="text-[10px] text-slate-400">1:45</span>
+</div>
+<div class="h-6 flex items-center gap-0.5 opacity-50">
+<div class="w-1 h-2 bg-slate-400 rounded-full"></div>
+<div class="w-1 h-3 bg-slate-400 rounded-full"></div>
+<div class="w-1 h-4 bg-slate-800 dark:bg-slate-200 rounded-full"></div>
+<div class="w-1 h-6 bg-slate-800 dark:bg-slate-200 rounded-full"></div>
+<div class="w-1 h-3 bg-slate-800 dark:bg-slate-200 rounded-full"></div>
+<div class="w-1 h-2 bg-slate-400 rounded-full"></div>
+<div class="w-1 h-4 bg-slate-400 rounded-full"></div>
+<div class="w-1 h-2 bg-slate-400 rounded-full"></div>
+<div class="w-1 h-3 bg-slate-400 rounded-full"></div>
+<div class="w-1 h-2 bg-slate-400 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>
+
+<!-- Feedback and Status System -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Feedback and Status System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f7ff0",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                        "success": "#10b981",
+                        "warning": "#f59e0b",
+                        "error": "#ef4444",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="max-w-[430px] mx-auto bg-background-light dark:bg-background-dark min-h-screen shadow-2xl overflow-x-hidden pb-12">
+<!-- TopAppBar -->
+<div class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-primary flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined cursor-pointer">arrow_back_ios</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Feedback &amp; Status</h2>
+<div class="size-12 shrink-0"></div>
+</div>
+</div>
+<!-- Section: Alert Banners -->
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Alert Banners</h3>
+<!-- Success Card -->
+<div class="p-4 pt-2">
+<div class="flex items-start justify-between gap-4 p-4 rounded-xl bg-white dark:bg-slate-800 border border-success/20 shadow-sm">
+<div class="flex flex-col gap-1 flex-[2_2_0px]">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-success text-xl">check_circle</span>
+<p class="text-success text-sm font-bold uppercase tracking-wider">Success</p>
+</div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">Operation completed</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Your profile changes have been saved successfully.</p>
+</div>
+<div class="w-24 bg-center bg-no-repeat aspect-square bg-cover rounded-lg shrink-0 opacity-80" data-alt="Abstract green check pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAIamF1s90M2uDZvVLcew9DDBEPKEX1TkSJrQAGXezGIskKYcG_HLICe7qbtzP_xiYUj76EWnNWD69HIFXNH0NK6bMjc3mnMpYSv1tV4diDUH3PUopDKR6_krNHF67_bY045c0xkXAsx8mCiCWNUPP1jKa2ns7NdpX3GRXdHpe-aKBtXpKjfu7i1M2cEj4wEuX-UNLXNfawNfIHJWsN1TzXVf3pwb5iwh8_WE0T5AGtHn6SEL06sCx3ZSzDcG8eV-SQfZdPC2GMIq4t");'></div>
+</div>
+</div>
+<!-- Info Card -->
+<div class="p-4 pt-0">
+<div class="flex items-start justify-between gap-4 p-4 rounded-xl bg-white dark:bg-slate-800 border border-primary/20 shadow-sm">
+<div class="flex flex-col gap-1 flex-[2_2_0px]">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">info</span>
+<p class="text-primary text-sm font-bold uppercase tracking-wider">Information</p>
+</div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">System Update</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Version 2.4.0 is ready to be installed. Check out new features.</p>
+</div>
+<div class="w-24 bg-center bg-no-repeat aspect-square bg-cover rounded-lg shrink-0 opacity-80" data-alt="Abstract blue info pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAV1m1Ln7Mhf0QtbDkxFbha3iv9MRTju6aS_NuX68zNT5jFQKKlunNcStVUGkmJWFHzdwQUEqKE-sPLxgwTRmW7FvLssZMd6jvjXssLBgkHwexvg3CWxx_CbsCM95Rqm6VE7eDkD5PPKvvNo6c-XvEGm7fmBEUKJJ6jdwT-X84XH3ceGfQDu-MQRfF5xbNuc7nHj_6Q4JWjpUVDbrMo6uz55B-0utPB4bYCJLi5u0wmc8EdO1sRHVQHrqJlLUAe9XO91mdolrNL9ru8");'></div>
+</div>
+</div>
+<!-- Warning Card -->
+<div class="p-4 pt-0">
+<div class="flex items-start justify-between gap-4 p-4 rounded-xl bg-white dark:bg-slate-800 border border-warning/20 shadow-sm">
+<div class="flex flex-col gap-1 flex-[2_2_0px]">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-warning text-xl">warning</span>
+<p class="text-warning text-sm font-bold uppercase tracking-wider">Warning</p>
+</div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">Storage Limit</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Your storage is 90% full. Please upgrade your plan soon.</p>
+</div>
+<div class="w-24 bg-center bg-no-repeat aspect-square bg-cover rounded-lg shrink-0 opacity-80" data-alt="Abstract orange warning pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDMo6nrUXvaZSfbthGDrA31bkOpIS2KGre4TUG6OpBRg-k1VZ1-QRrYer6_SdRg8WZ2xFR_vSLhq6HNuyq3KNE-hy3KoZJNTZ2jpAbFikrw7MMXCxHo2wbQzvPRb4otvNTtzjkwOfp-WPnyOvajQdfC8St08GoQbcAAOPzuPCfKEvj9SGYrShpfypvmot_lPvBTEFOPG7uEyrl5XkvLY_wP1v_XY4lEecEvXcqtZscNQgb8fI84FDt4hsEB-IYpq9jifF_fHHUyknQs");'></div>
+</div>
+</div>
+<!-- Section: Toast Notifications -->
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Toast Notifications</h3>
+<div class="p-4 flex flex-col gap-3">
+<!-- Toast Example 1 -->
+<div class="flex items-center gap-3 bg-slate-800 text-white p-3 px-4 rounded-full shadow-lg max-w-fit mx-auto">
+<span class="material-symbols-outlined text-success">check</span>
+<span class="text-sm font-medium">Message sent successfully</span>
+</div>
+<!-- Toast Example 2 -->
+<div class="flex items-center gap-3 bg-slate-800 text-white p-3 px-4 rounded-full shadow-lg max-w-fit mx-auto">
+<span class="material-symbols-outlined text-error">error</span>
+<span class="text-sm font-medium">Unable to connect to server</span>
+<button class="text-primary font-bold text-sm ml-2">RETRY</button>
+</div>
+</div>
+<!-- Section: Progress & Loading -->
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Progress &amp; Loading</h3>
+<div class="p-4 mx-4 bg-white dark:bg-slate-800 rounded-xl flex flex-col gap-6">
+<!-- Progress Bar -->
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-sm font-medium text-slate-600 dark:text-slate-300">Uploading files...</span>
+<span class="text-sm font-bold text-primary">65%</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[65%] rounded-full"></div>
+</div>
+</div>
+<!-- Loading Spinner -->
+<div class="flex items-center gap-4">
+<div class="relative flex items-center justify-center">
+<div class="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+</div>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-300">Syncing database...</span>
+</div>
+</div>
+<!-- Section: Empty State -->
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Empty States</h3>
+<div class="p-4 text-center">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-8 flex flex-col items-center">
+<div class="w-32 h-32 mb-4 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-slate-400">notifications_off</span>
+</div>
+<h4 class="text-slate-900 dark:text-white text-xl font-bold mb-2">No Notifications</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-6 max-w-[200px] mx-auto">You're all caught up! New notifications will appear here when they arrive.</p>
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full transition-colors w-full">
+                    Check for Updates
+                </button>
+</div>
+</div>
+</div>
+</body></html>
