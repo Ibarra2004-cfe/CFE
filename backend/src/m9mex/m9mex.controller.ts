@@ -6,7 +6,9 @@ import {
   Param,
   Patch,
   Post,
+  Res,
 } from "@nestjs/common";
+import type { Response } from "express";
 import { M9mexService } from "./m9mex.service";
 import { CreateM9mexDto } from "./dto/create-m9mex.dto";
 import { UpdateM9mexDto } from "./dto/update-m9mex.dto";
@@ -43,22 +45,24 @@ export class M9mexController {
   }
 
   @Get(":id/excel")
-  generarExcel(@Param("id") id: string) {
+  async generarExcel(@Param("id") id: string, @Res() res: Response) {
     const numericId = Number(id);
     if (Number.isNaN(numericId)) {
       throw new Error("ID inválido");
     }
 
-    return this.m9mexService.generarExcel(numericId);
+    const { filePath } = await this.m9mexService.generarExcel(numericId);
+    res.download(filePath);
   }
 
   @Get(":id/pdf")
-  generarPdf(@Param("id") id: string) {
+  async generarPdf(@Param("id") id: string, @Res() res: Response) {
     const numericId = Number(id);
     if (Number.isNaN(numericId)) {
       throw new Error("ID inválido");
     }
 
-    return this.m9mexService.generarPdf(numericId);
+    const { filePath } = await this.m9mexService.generarPdf(numericId);
+    res.download(filePath);
   }
 }
