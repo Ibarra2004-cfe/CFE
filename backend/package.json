@@ -9,6 +9,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
+    "prestart:dev": "npx prisma db push",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
@@ -28,8 +29,10 @@
     "@prisma/client": "^6.19.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.3",
+    "exceljs": "^4.4.0",
     "multer": "^2.0.2",
     "pdf-lib": "^1.17.1",
+    "puppeteer": "^24.36.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },

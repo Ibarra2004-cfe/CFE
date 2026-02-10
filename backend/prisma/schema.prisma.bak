@@ -1,0 +1,138 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum TipoOrden {
+  INSTALACION
+  RETIRO
+  CAMBIO
+  MODIFICACION
+}
+
+enum MedicionEn {
+  BAJA_TENSION
+  ALTA_TENSION
+}
+
+enum SiNo {
+  SI
+  NO
+}
+
+enum ReactivaTipo {
+  KVARH
+  KQH
+}
+
+enum Indicacion {
+  INDICATIVA
+  DIRECTA
+}
+
+model M9Mex {
+  id            Int       @id @default(autoincrement())
+  folio         String    @unique
+
+  // Encabezado
+  fecha         DateTime
+  tipoOrden     TipoOrden
+  ordenAtendida String?
+  usuario       String?
+  domicilio     String?
+  observaciones String?
+
+  // Servicio (parte superior)
+  seConsumidor      String?
+  voltajePrimario   String?
+  voltajeSecundario String?
+  subestacion       String?
+  agencia           String?
+  tarifa            String?
+  demCont           String?
+  kws               String?
+
+  // Medicion / cobrar / etc.
+  medicionEn   MedicionEn?
+  cobrar2Porc  SiNo?
+
+  // Datos del medidor
+  noCfe         String?
+  noFabrica     String?
+  marcaMedidor  String?
+  tipoMedidor   String?
+  codigoMedidor String?
+  codigoLote     String?
+  faseElementos String?
+  hilosConexion String?
+  ampsClase     String?
+  volts         String?
+  rrRs          String?
+  khKr          String?
+  lectura       String?
+  noCaratulas   String?
+  multiplicador String?
+  kwTipo        String?
+
+  // INSTALADO
+  inst_kwh      String?
+  inst_kw       String?
+  inst_reactiva ReactivaTipo?
+
+  // RETIRADO
+  ret_kwh      String?
+  ret_kw       String?
+  ret_reactiva ReactivaTipo?
+
+  // Indicativa / Directa + demanda
+  demanda         String?
+  inst_indicacion Indicacion?
+  ret_indicacion  Indicacion?
+  kwPeriodo       String?
+  dias            String?
+  escala          String?
+
+  // Sellos encontrados / dejados
+  selloEncontrado String?
+  selloDejado     String?
+
+  // Transformadores
+  transf_equipoCompactoNo String?
+  transf_noSerie           String?
+  transf_corriente         String?
+  transf_potencial         String?
+  transf_marcaTipo         String?
+  transf_relacion          String?
+  transf_garganta          String?
+  transf_sellosEncontrados String?
+  transf_sellosDejados     String?
+
+  // Recepción y firmas
+  recibidoPor              String?
+  firmaRpeCalibradorBase64 String?
+  firmaRpeTecnicoBase64    String?
+  firmaRpeJefeBase64       String?
+
+  creadoEn      DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
+
+  evidencias    Evidencia[]
+}
+
+model Evidencia {
+  id        Int      @id @default(autoincrement())
+  m9mexId   Int
+  tipo      String
+  filename  String
+  mimeType  String
+  url       String
+  creadoEn  DateTime @default(now())
+
+  m9mex     M9Mex    @relation(fields: [m9mexId], references: [id], onDelete: Cascade)
+
+  @@index([m9mexId])
+}

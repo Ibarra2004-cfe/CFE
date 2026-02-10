@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Feedback and Status System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f7ff0",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                        "success": "#10b981",
+                        "warning": "#f59e0b",
+                        "error": "#ef4444",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="max-w-[430px] mx-auto bg-background-light dark:bg-background-dark min-h-screen shadow-2xl overflow-x-hidden pb-12">
+<!-- TopAppBar -->
+<div class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-primary flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined cursor-pointer">arrow_back_ios</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Feedback &amp; Status</h2>
+<div class="size-12 shrink-0"></div>
+</div>
+</div>
+<!-- Section: Alert Banners -->
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Alert Banners</h3>
+<!-- Success Card -->
+<div class="p-4 pt-2">
+<div class="flex items-start justify-between gap-4 p-4 rounded-xl bg-white dark:bg-slate-800 border border-success/20 shadow-sm">
+<div class="flex flex-col gap-1 flex-[2_2_0px]">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-success text-xl">check_circle</span>
+<p class="text-success text-sm font-bold uppercase tracking-wider">Success</p>
+</div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">Operation completed</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Your profile changes have been saved successfully.</p>
+</div>
+<div class="w-24 bg-center bg-no-repeat aspect-square bg-cover rounded-lg shrink-0 opacity-80" data-alt="Abstract green check pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAIamF1s90M2uDZvVLcew9DDBEPKEX1TkSJrQAGXezGIskKYcG_HLICe7qbtzP_xiYUj76EWnNWD69HIFXNH0NK6bMjc3mnMpYSv1tV4diDUH3PUopDKR6_krNHF67_bY045c0xkXAsx8mCiCWNUPP1jKa2ns7NdpX3GRXdHpe-aKBtXpKjfu7i1M2cEj4wEuX-UNLXNfawNfIHJWsN1TzXVf3pwb5iwh8_WE0T5AGtHn6SEL06sCx3ZSzDcG8eV-SQfZdPC2GMIq4t");'></div>
+</div>
+</div>
+<!-- Info Card -->
+<div class="p-4 pt-0">
+<div class="flex items-start justify-between gap-4 p-4 rounded-xl bg-white dark:bg-slate-800 border border-primary/20 shadow-sm">
+<div class="flex flex-col gap-1 flex-[2_2_0px]">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">info</span>
+<p class="text-primary text-sm font-bold uppercase tracking-wider">Information</p>
+</div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">System Update</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Version 2.4.0 is ready to be installed. Check out new features.</p>
+</div>
+<div class="w-24 bg-center bg-no-repeat aspect-square bg-cover rounded-lg shrink-0 opacity-80" data-alt="Abstract blue info pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAV1m1Ln7Mhf0QtbDkxFbha3iv9MRTju6aS_NuX68zNT5jFQKKlunNcStVUGkmJWFHzdwQUEqKE-sPLxgwTRmW7FvLssZMd6jvjXssLBgkHwexvg3CWxx_CbsCM95Rqm6VE7eDkD5PPKvvNo6c-XvEGm7fmBEUKJJ6jdwT-X84XH3ceGfQDu-MQRfF5xbNuc7nHj_6Q4JWjpUVDbrMo6uz55B-0utPB4bYCJLi5u0wmc8EdO1sRHVQHrqJlLUAe9XO91mdolrNL9ru8");'></div>
+</div>
+</div>
+<!-- Warning Card -->
+<div class="p-4 pt-0">
+<div class="flex items-start justify-between gap-4 p-4 rounded-xl bg-white dark:bg-slate-800 border border-warning/20 shadow-sm">
+<div class="flex flex-col gap-1 flex-[2_2_0px]">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-warning text-xl">warning</span>
+<p class="text-warning text-sm font-bold uppercase tracking-wider">Warning</p>
+</div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">Storage Limit</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Your storage is 90% full. Please upgrade your plan soon.</p>
+</div>
+<div class="w-24 bg-center bg-no-repeat aspect-square bg-cover rounded-lg shrink-0 opacity-80" data-alt="Abstract orange warning pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDMo6nrUXvaZSfbthGDrA31bkOpIS2KGre4TUG6OpBRg-k1VZ1-QRrYer6_SdRg8WZ2xFR_vSLhq6HNuyq3KNE-hy3KoZJNTZ2jpAbFikrw7MMXCxHo2wbQzvPRb4otvNTtzjkwOfp-WPnyOvajQdfC8St08GoQbcAAOPzuPCfKEvj9SGYrShpfypvmot_lPvBTEFOPG7uEyrl5XkvLY_wP1v_XY4lEecEvXcqtZscNQgb8fI84FDt4hsEB-IYpq9jifF_fHHUyknQs");'></div>
+</div>
+</div>
+<!-- Section: Toast Notifications -->
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Toast Notifications</h3>
+<div class="p-4 flex flex-col gap-3">
+<!-- Toast Example 1 -->
+<div class="flex items-center gap-3 bg-slate-800 text-white p-3 px-4 rounded-full shadow-lg max-w-fit mx-auto">
+<span class="material-symbols-outlined text-success">check</span>
+<span class="text-sm font-medium">Message sent successfully</span>
+</div>
+<!-- Toast Example 2 -->
+<div class="flex items-center gap-3 bg-slate-800 text-white p-3 px-4 rounded-full shadow-lg max-w-fit mx-auto">
+<span class="material-symbols-outlined text-error">error</span>
+<span class="text-sm font-medium">Unable to connect to server</span>
+<button class="text-primary font-bold text-sm ml-2">RETRY</button>
+</div>
+</div>
+<!-- Section: Progress & Loading -->
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Progress &amp; Loading</h3>
+<div class="p-4 mx-4 bg-white dark:bg-slate-800 rounded-xl flex flex-col gap-6">
+<!-- Progress Bar -->
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-sm font-medium text-slate-600 dark:text-slate-300">Uploading files...</span>
+<span class="text-sm font-bold text-primary">65%</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[65%] rounded-full"></div>
+</div>
+</div>
+<!-- Loading Spinner -->
+<div class="flex items-center gap-4">
+<div class="relative flex items-center justify-center">
+<div class="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+</div>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-300">Syncing database...</span>
+</div>
+</div>
+<!-- Section: Empty State -->
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Empty States</h3>
+<div class="p-4 text-center">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-8 flex flex-col items-center">
+<div class="w-32 h-32 mb-4 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-slate-400">notifications_off</span>
+</div>
+<h4 class="text-slate-900 dark:text-white text-xl font-bold mb-2">No Notifications</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-6 max-w-[200px] mx-auto">You're all caught up! New notifications will appear here when they arrive.</p>
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full transition-colors w-full">
+                    Check for Updates
+                </button>
+</div>
+</div>
+</div>
+</body></html>

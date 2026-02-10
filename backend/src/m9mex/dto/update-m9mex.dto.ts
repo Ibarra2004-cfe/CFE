@@ -5,7 +5,7 @@ import { IsOptional } from "class-validator";
 export class UpdateM9mexDto extends PartialType(CreateM9mexDto) {
   @IsOptional() fecha?: string;
 
-  // Enums
+  // Enums (para que no truene TS)
   @IsOptional() tipoOrden?: any;
   @IsOptional() medicionEn?: any;
   @IsOptional() cobrar2Porc?: any;
