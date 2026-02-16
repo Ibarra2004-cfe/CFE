@@ -1,6 +1,6 @@
 import { M9Mex } from "@prisma/client";
 
-export function generateM9MexHtml(data: any): string {
+export function generateM9MexHtml(data: Partial<M9Mex> & Record<string, any>): string {
   const val = (v: any) =>
     v === null || v === undefined || String(v).trim() === "" ? "" : String(v);
 
@@ -13,9 +13,22 @@ export function generateM9MexHtml(data: any): string {
     return d.toISOString().split("T")[0];
   };
 
-  // Para LECTURA: si existe lectura úsala; si no, usa inst_kwh/inst_kw como fallback
-  const lecturaInst = val(data.lectura) || val(data.inst_kwh) || val(data.inst_kw);
-  const lecturaRet = val(data.ret_lectura) || val(data.ret_kwh) || val(data.ret_kw);
+  /**
+   * ✅ LECTURA:
+   * - En tu schema SOLO existe `lectura` (instalado)
+   * - Para retirado NO existe `ret_lectura`, así que usamos fallback:
+   *   ret_kwh / ret_kw / inst_kwh / inst_kw
+   */
+  const lecturaInst =
+    val(data.lectura) ||
+    val(data.inst_kwh) ||
+    val(data.inst_kw);
+
+  const lecturaRet =
+    val(data.ret_kwh) ||
+    val(data.ret_kw) ||
+    val(data.inst_kwh) ||
+    val(data.inst_kw);
 
   return `
   <!DOCTYPE html>
@@ -40,20 +53,19 @@ export function generateM9MexHtml(data: any): string {
       th { background-color: #eee; }
 
       .left { text-align: left; }
-      .w-100 { width: 100%; }
 
       .signature-area { margin-top: 20px; overflow: hidden; }
       .sig-box { float: left; width: 30%; text-align: center; margin-right: 3%; }
       .sig-line { border-top: 1px solid black; margin-top: 40px; }
 
-      /* ✅ nueva franja (No. Orden + RPU) */
+      /* ✅ franja (Orden + RPU) */
       .order-meta { margin: 6px 0 8px 0; }
       .order-meta .label { width: 110px; }
       .order-meta .input { width: 230px; }
       .order-meta .label.rpu { width: 40px; margin-left: 14px; }
       .order-meta .input.rpu { width: 220px; }
 
-      /* ✅ franja de checks del tipo de orden */
+      /* ✅ franja checks */
       .order-type { text-align: center; margin: 6px 0; }
     </style>
   </head>
@@ -62,11 +74,16 @@ export function generateM9MexHtml(data: any): string {
   <div class="container">
     <!-- HEADER -->
     <div class="header">
-      <div class="logo">CFE <span style="font-size:10px; display:block;">Distribución<br>Centro Oriente</span></div>
+      <div class="logo">
+        CFE
+        <span style="font-size:10px; display:block;">Distribución<br>Centro Oriente</span>
+      </div>
+
       <div class="title">
         COMISIÓN FEDERAL DE ELECTRICIDAD<br>
         DIVISIÓN CENTRO ORIENTE
       </div>
+
       <div class="folio">
         FORMA M9MEX<br>
         <span style="font-size: 18px;">${val(data.folio)}</span><br>
@@ -80,18 +97,18 @@ export function generateM9MexHtml(data: any): string {
       INSTALACIÓN - CAMBIOS - RETIROS
     </div>
 
-    <!-- ✅ NO. ORDEN / RPU (esto era lo que faltaba) -->
+    <!-- ✅ ORDEN / RPU -->
     <div class="section order-meta">
       <div class="row">
         <span class="label">ORDEN ATENDIDA:</span>
         <span class="input">${val(data.ordenAtendida)}</span>
 
         <span class="label rpu">RPU:</span>
-        <span class="input rpu">${val(data.rpu)}</span>
+        <span class="input rpu">${val((data as any).rpu)}</span>
       </div>
     </div>
 
-    <!-- ORDER TYPE (checks) -->
+    <!-- ✅ ORDER TYPE -->
     <div class="section order-type">
       ${check(data.tipoOrden === "INSTALACION")} INSTALACIÓN &nbsp;&nbsp;
       ${check(data.tipoOrden === "CAMBIO")} CAMBIO &nbsp;&nbsp;
@@ -101,45 +118,61 @@ export function generateM9MexHtml(data: any): string {
 
     <!-- USER INFO -->
     <div class="section">
-      <div class="row"><span class="label" style="width: 80px;">USUARIO:</span>
+      <div class="row">
+        <span class="label" style="width: 80px;">USUARIO:</span>
         <span class="input" style="width: 600px;">${val(data.usuario)}</span>
       </div>
 
-      <div class="row"><span class="label" style="width: 80px;">DOMICILIO:</span>
+      <div class="row">
+        <span class="label" style="width: 80px;">DOMICILIO:</span>
         <span class="input" style="width: 600px;">${val(data.domicilio)}</span>
       </div>
 
-      <div class="row"><span class="label" style="width: 80px;">OBSERVACIONES:</span>
-        <span class="input" style="width: 600px;">${val(data.observaciones)}</span>
+      <div class="row">
+        <span class="label" style="width: 110px;">OBSERVACIONES:</span>
+        <span class="input" style="width: 570px;">${val(data.observaciones)}</span>
       </div>
     </div>
 
     <!-- SERVICE INFO -->
     <div class="section">
       <div class="row">
-        <span class="label">S.E. CONSUMIDOR:</span> <span class="input" style="width: 100px;">${val(data.seConsumidor)}</span>
-        <span class="label" style="margin-left: 10px;">MARCA:</span> <span class="input" style="width: 100px;">${val(data.marcaMedidor)}</span> 
-        <span class="label" style="margin-left: 10px;">DEM. CONT.:</span> <span class="input" style="width: 50px;">${val(data.demCont)}</span>
-        <span class="label" style="margin-left: 10px;">KW'S:</span> <span class="input" style="width: 60px;">${val(data.kws)}</span>
+        <span class="label">S.E. CONSUMIDOR:</span>
+        <span class="input" style="width: 100px;">${val(data.seConsumidor)}</span>
+
+        <span class="label" style="margin-left: 10px;">MARCA:</span>
+        <span class="input" style="width: 100px;">${val(data.marcaMedidor)}</span>
+
+        <span class="label" style="margin-left: 10px;">DEM. CONT.:</span>
+        <span class="input" style="width: 50px;">${val(data.demCont)}</span>
+
+        <span class="label" style="margin-left: 10px;">KW'S:</span>
+        <span class="input" style="width: 60px;">${val(data.kws)}</span>
       </div>
 
       <div class="row">
-        <span class="label">VOLTAJE PRIMARIO:</span> <span class="input" style="width: 80px;">${val(data.voltajePrimario)}</span>
-        <span class="label" style="margin-left: 10px;">VOLTAJE SECUNDARIO:</span> <span class="input" style="width: 80px;">${val(data.voltajeSecundario)}</span>
-        <span class="label" style="margin-left: 10px;">TARIFA:</span> <span class="input" style="width: 80px;">${val(data.tarifa)}</span>
+        <span class="label">VOLTAJE PRIMARIO:</span>
+        <span class="input" style="width: 80px;">${val(data.voltajePrimario)}</span>
+
+        <span class="label" style="margin-left: 10px;">VOLTAJE SECUNDARIO:</span>
+        <span class="input" style="width: 80px;">${val(data.voltajeSecundario)}</span>
+
+        <span class="label" style="margin-left: 10px;">TARIFA:</span>
+        <span class="input" style="width: 80px;">${val(data.tarifa)}</span>
       </div>
 
       <div class="row">
-        <span class="label">SUCURSAL O AGENCIA:</span> <span class="input" style="width: 200px;">${val(data.agencia)}</span>
+        <span class="label">SUCURSAL O AGENCIA:</span>
+        <span class="input" style="width: 200px;">${val(data.agencia)}</span>
       </div>
     </div>
 
     <!-- MEDICION EN -->
     <div class="section" style="margin-top: 5px;">
-      MEDICIÓN EN:&nbsp;&nbsp; 
+      MEDICIÓN EN:&nbsp;&nbsp;
       ${check(data.medicionEn === "BAJA_TENSION")} BAJA TENSIÓN &nbsp;&nbsp;
       ${check(data.medicionEn === "ALTA_TENSION")} ALTA TENSIÓN &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      COBRAR 2%: 
+      COBRAR 2%:
       ${check(data.cobrar2Porc === "SI")} SI &nbsp;&nbsp;
       ${check(data.cobrar2Porc === "NO")} NO
     </div>
@@ -167,66 +200,77 @@ export function generateM9MexHtml(data: any): string {
           <td>${val(data.ret_noCfe)}</td><td>${val(data.ret_noCfe)}</td>
           <td></td>
         </tr>
+
         <tr>
           <td class="left">No. DE FABRICA</td>
           <td>${val(data.noFabrica)}</td><td>${val(data.noFabrica)}</td>
           <td>${val(data.ret_noFabrica)}</td><td>${val(data.ret_noFabrica)}</td>
           <td></td>
         </tr>
+
         <tr>
           <td class="left">MARCA</td>
           <td>${val(data.marcaMedidor)}</td><td>${val(data.marcaMedidor)}</td>
           <td>${val(data.ret_marcaMedidor)}</td><td>${val(data.ret_marcaMedidor)}</td>
           <td></td>
         </tr>
+
         <tr>
           <td class="left">TIPO</td>
           <td>${val(data.tipoMedidor)}</td><td>${val(data.tipoMedidor)}</td>
           <td>${val(data.ret_tipoMedidor)}</td><td>${val(data.ret_tipoMedidor)}</td>
           <td></td>
         </tr>
+
         <tr>
           <td class="left">CÓDIGO DE MEDIDOR</td>
           <td>${val(data.codigoMedidor)}</td><td>${val(data.codigoMedidor)}</td>
           <td>${val(data.ret_codigoMedidor)}</td><td>${val(data.ret_codigoMedidor)}</td>
           <td></td>
         </tr>
+
         <tr>
           <td class="left">CÓDIGO DE LOTE</td>
           <td>${val(data.codigoLote)}</td><td>${val(data.codigoLote)}</td>
           <td>${val(data.ret_codigoLote)}</td><td>${val(data.ret_codigoLote)}</td>
           <td></td>
         </tr>
+
         <tr>
           <td class="left">FASE - ELEMENTOS</td>
           <td>${val(data.faseElementos)}</td><td>${val(data.faseElementos)}</td>
           <td>${val(data.ret_faseElementos)}</td><td>${val(data.ret_faseElementos)}</td>
           <td></td>
         </tr>
+
         <tr>
           <td class="left">HILOS - CONEXIÓN</td>
           <td>${val(data.hilosConexion)}</td><td>${val(data.hilosConexion)}</td>
           <td>${val(data.ret_hilosConexion)}</td><td>${val(data.ret_hilosConexion)}</td>
           <td></td>
         </tr>
+
         <tr>
           <td class="left">AMPS (CLASE)</td>
           <td>${val(data.ampsClase)}</td><td>${val(data.ampsClase)}</td>
           <td>${val(data.ret_ampsClase)}</td><td>${val(data.ret_ampsClase)}</td>
           <td></td>
         </tr>
+
         <tr>
           <td class="left">VOLTS</td>
           <td>${val(data.volts)}</td><td>${val(data.volts)}</td>
           <td>${val(data.ret_volts)}</td><td>${val(data.ret_volts)}</td>
           <td></td>
         </tr>
+
         <tr>
           <td class="left">Rr - Rs</td>
           <td>${val(data.rrRs)}</td><td>${val(data.rrRs)}</td>
           <td>${val(data.ret_rrRs)}</td><td>${val(data.ret_rrRs)}</td>
           <td></td>
         </tr>
+
         <tr>
           <td class="left">Kh - Kr</td>
           <td>${val(data.khKr)}</td><td>${val(data.khKr)}</td>
@@ -234,7 +278,7 @@ export function generateM9MexHtml(data: any): string {
           <td></td>
         </tr>
 
-        <!-- ✅ LECTURA: ahora usa lectura real si existe -->
+        <!-- ✅ LECTURA -->
         <tr>
           <td class="left">LECTURA</td>
           <td>${lecturaInst}</td><td>${lecturaInst}</td>
@@ -248,12 +292,14 @@ export function generateM9MexHtml(data: any): string {
           <td>${val(data.ret_noCaratulas)}</td><td>${val(data.ret_noCaratulas)}</td>
           <td></td>
         </tr>
+
         <tr>
           <td class="left">MULTIPLICADOR</td>
           <td>${val(data.multiplicador)}</td><td>${val(data.multiplicador)}</td>
           <td>${val(data.ret_multiplicador)}</td><td>${val(data.ret_multiplicador)}</td>
           <td></td>
         </tr>
+
         <tr>
           <td class="left">KW TIPO</td>
           <td>${val(data.kwTipo)}</td><td>${val(data.kwTipo)}</td>
@@ -274,6 +320,7 @@ export function generateM9MexHtml(data: any): string {
           </td>
           <td></td>
         </tr>
+
         <tr><td class="left">KW PERIODO</td><td colspan="2">${val(data.kwPeriodo)}</td><td colspan="2"></td><td></td></tr>
         <tr><td class="left">ESCALA</td><td colspan="2">${val(data.escala)}</td><td colspan="2"></td><td></td></tr>
 
@@ -282,10 +329,12 @@ export function generateM9MexHtml(data: any): string {
           <td class="left">SELLOS</td>
           <td>KWH</td><td>KW</td><td>KVARH</td><td>MEC KWH</td><td></td>
         </tr>
+
         <tr>
           <td class="left">ENCONTRADO</td>
           <td colspan="5" class="left">${val(data.selloEncontrado)}</td>
         </tr>
+
         <tr>
           <td class="left">DEJADO</td>
           <td colspan="5" class="left">${val(data.selloDejado)}</td>
@@ -310,7 +359,6 @@ export function generateM9MexHtml(data: any): string {
     </div>
 
   </div>
-
   </body>
   </html>
   `;

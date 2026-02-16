@@ -5,12 +5,11 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: true, // ✅ deja pasar localhost:8081, 19006, etc
-    credentials: true,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    origin: true, // ✅ refleja el origin (dev: expo/web)
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    credentials: false,
   });
 
-  // ✅ importante: escuchar en la red, no solo localhost
-  await app.listen(3006, "0.0.0.0");
+  await app.listen(process.env.PORT ? Number(process.env.PORT) : 3006, "0.0.0.0"); // ✅ importante
 }
 bootstrap();

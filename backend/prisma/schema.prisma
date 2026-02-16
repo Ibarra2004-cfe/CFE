@@ -7,88 +7,161 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+/**
+ * ============================
+ * TABLA PRINCIPAL M9MEX
+ * ============================
+ */
+
 model M9Mex {
-  id                       Int           @id @default(autoincrement())
-  folio                    String        @unique
-  fecha                    DateTime
-  tipoOrden                TipoOrden
-  ordenAtendida            String?
-  usuario                  String?
-  domicilio                String?
-  observaciones            String?
-  seConsumidor             String?
-  voltajePrimario          String?
-  voltajeSecundario        String?
-  subestacion              String?
-  agencia                  String?
-  tarifa                   String?
-  demCont                  String?
-  kws                      String?
-  medicionEn               MedicionEn?
-  cobrar2Porc              SiNo?
-  noCfe                    String?
-  noFabrica                String?
-  marcaMedidor             String?
-  tipoMedidor              String?
-  codigoMedidor            String?
-  codigoLote               String?
-  faseElementos            String?
-  hilosConexion            String?
-  ampsClase                String?
-  volts                    String?
-  rrRs                     String?
-  khKr                     String?
-  lectura                  String?
-  noCaratulas              String?
-  multiplicador            String?
-  kwTipo                   String?
-  ret_noCfe                String?
-  ret_noFabrica            String?
-  ret_marcaMedidor         String?
-  ret_tipoMedidor          String?
-  ret_codigoMedidor        String?
-  ret_codigoLote           String?
-  ret_faseElementos        String?
-  ret_hilosConexion        String?
-  ret_ampsClase            String?
-  ret_volts                String?
-  ret_rrRs                 String?
-  ret_khKr                 String?
-  ret_noCaratulas          String?
-  ret_multiplicador        String?
-  ret_kwTipo               String?
-  inst_kwh                 String?
-  inst_kw                  String?
-  inst_reactiva            ReactivaTipo?
-  ret_kwh                  String?
-  ret_kw                   String?
-  ret_reactiva             ReactivaTipo?
-  demanda                  String?
-  inst_indicacion          Indicacion?
-  ret_indicacion           Indicacion?
-  kwPeriodo                String?
-  dias                     String?
-  escala                   String?
-  selloEncontrado          String?
-  selloDejado              String?
-  transf_equipoCompactoNo  String?
-  transf_noSerie           String?
-  transf_corriente         String?
-  transf_potencial         String?
-  transf_marcaTipo         String?
-  transf_relacion          String?
-  transf_garganta          String?
-  transf_sellosEncontrados String?
-  transf_sellosDejados     String?
-  recibidoPor              String?
-  firmaRpeCalibradorBase64 String?
-  firmaRpeTecnicoBase64    String?
-  firmaRpeJefeBase64       String?
-  creadoEn                 DateTime      @default(now())
-  actualizadoEn            DateTime      @updatedAt
-  rpu                      String?
-  evidencias               Evidencia[]
+  id        Int       @id @default(autoincrement())
+  folio     String    @unique
+  fecha     DateTime
+  tipoOrden TipoOrden
+
+  ordenAtendida String?
+  rpu           String? @db.VarChar(191)
+
+  usuario       String?
+  domicilio     String?
+  observaciones String?
+
+  seConsumidor      String?
+  voltajePrimario   String?
+  voltajeSecundario String?
+  subestacion       String?
+  agencia           String?
+  tarifa            String?
+  demCont           String?
+  kws               String?
+
+  medicionEn  MedicionEn?
+  cobrar2Porc SiNo?
+
+  // ===== INSTALADO =====
+  noCfe         String?
+  noFabrica     String?
+  marcaMedidor  String?
+  tipoMedidor   String?
+  codigoMedidor String?
+  codigoLote    String?
+  faseElementos String?
+  hilosConexion String?
+  ampsClase     String?
+  volts         String?
+  rrRs          String?
+  khKr          String?
+  lectura       String?
+  noCaratulas   String?
+  multiplicador String?
+  kwTipo        String?
+
+  // ===== RETIRADO =====
+  ret_noCfe         String?
+  ret_noFabrica     String?
+  ret_marcaMedidor  String?
+  ret_tipoMedidor   String?
+  ret_codigoMedidor String?
+  ret_codigoLote    String?
+  ret_faseElementos String?
+  ret_hilosConexion String?
+  ret_ampsClase     String?
+  ret_volts         String?
+  ret_rrRs          String?
+  ret_khKr          String?
+  ret_noCaratulas   String?
+  ret_multiplicador String?
+  ret_kwTipo        String?
+
+  // ===== LECTURAS =====
+  inst_kwh String?
+  inst_kw  String?
+  ret_kwh  String?
+  ret_kw   String?
+
+  // ✅ REACTIVA (YA EXISTE EL ENUM ABAJO)
+  inst_reactiva ReactivaTipo?
+  ret_reactiva  ReactivaTipo?
+
+  // ===== DEMANDA / INDICACIÓN =====
+  demanda         String?
+  inst_indicacion Indicacion?
+  ret_indicacion  Indicacion?
+  kwPeriodo       String?
+  dias            String?
+  escala          String?
+
+  // ===== SELLOS =====
+  selloEncontrado String?
+  selloDejado     String?
+
+  // ===== CIERRE =====
+  recibidoPor String?
+
+  creadoEn      DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
+
+  evidencias Evidencia[]
+
+  // ✅ SI tu tabla en MySQL se llama distinto, descomenta y ajusta:
+  // @@map("M9Mex")
 }
+
+/**
+ * ============================
+ * TABLA DEL PADRÓN (EXCEL)
+ * ============================
+ */
+
+model ServicioMatamoros {
+  id Int @id @default(autoincrement())
+
+  // clave principal
+  rpu String @unique @db.VarChar(191)
+
+  // campos del Excel (los que te tronaban en el import)
+  cuenta  String? @db.VarChar(191)
+  agencia String? @db.VarChar(191)
+  estatus String? @db.VarChar(191)
+  tarifa  String? @db.VarChar(191)
+  hilos   String? @db.VarChar(191)
+
+  nombre    String? @db.VarChar(191)
+  direccion String? @db.VarChar(255)
+  colonia   String? @db.VarChar(255)
+
+  suministro       String? @db.VarChar(191)
+  carga_contratada String? @db.VarChar(191)
+  carga_instalada  String? @db.VarChar(191)
+
+  numero_de_medidor String? @db.VarChar(191)
+  multiplicador     String? @db.VarChar(191)
+  circuito          String? @db.VarChar(191)
+
+  // opcionales extra
+  claveSolicitud String? @db.VarChar(191)
+  servicio       String? @db.VarChar(191)
+  tension        String? @db.VarChar(191)
+  fechaConexion  String? @db.VarChar(191)
+  zona           String? @db.VarChar(191)
+
+  kwh    String? @db.VarChar(191)
+  tipo   String? @db.VarChar(191)
+  region String? @db.VarChar(191)
+
+  creadoEn DateTime @default(now())
+
+  // ✅ SI tu tabla en MySQL se llama distinto, descomenta y ajusta:
+  // @@map("servicio_matamoros")
+
+  @@index([rpu])
+}
+
+/**
+ * ============================
+ * TABLA EVIDENCIAS
+ * ============================
+ */
 
 model Evidencia {
   id       Int      @id @default(autoincrement())
@@ -98,10 +171,20 @@ model Evidencia {
   mimeType String
   url      String
   creadoEn DateTime @default(now())
-  m9mex    M9Mex    @relation(fields: [m9mexId], references: [id], onDelete: Cascade)
+
+  m9mex M9Mex @relation(fields: [m9mexId], references: [id], onDelete: Cascade)
+
+  // ✅ SI tu tabla en MySQL se llama distinto, descomenta y ajusta:
+  // @@map("evidencia")
 
   @@index([m9mexId])
 }
+
+/**
+ * ============================
+ * ENUMS
+ * ============================
+ */
 
 enum TipoOrden {
   INSTALACION
@@ -120,12 +203,12 @@ enum SiNo {
   NO
 }
 
-enum ReactivaTipo {
-  KVARH
-  KQH
-}
-
 enum Indicacion {
   INDICATIVA
   DIRECTA
+}
+
+enum ReactivaTipo {
+  KVARH
+  KQH
 }

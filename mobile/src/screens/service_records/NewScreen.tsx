@@ -1,56 +1,22 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Alert, ScrollView, StyleSheet, View, Platform } from "react-native";
 import { TextInput, Button, Text } from "react-native-paper";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { MaterialIcons } from "@expo/vector-icons";
+
 import { RootStackParamList } from "../../../App";
 import { serviceRecordService } from "../../services/service_records/serviceRecordService";
 import MeterForm from "../../components/service_records/MeterForm";
-import { TipoOrden, MedicionEn } from "../../types/service_records/service_record";
 import SelectField from "../../components/common/SelectField";
-import { MaterialIcons } from "@expo/vector-icons";
+import { padronService } from "../../services/padron/padronService";
+
+import { MedidorData, TipoOrden, MedicionEn } from "../../types/service_records/service_record";
 
 type Props = NativeStackScreenProps<RootStackParamList, "New">;
+
 const IS_WEB = Platform.OS === "web";
 
-/**
- * ✅ Tipo local: extiende lo que ya tengas en tu app,
- * para soportar los campos extra que quieres mandar al backend/Excel.
- */
-type MedidorFormData = {
-  noCfe: string;
-  noFabrica: string;
-  marcaMedidor: "WASION" | "ELSTER";
-  tipoMedidor: string;
-  codigoMedidor: string;
-  codigoLote: string;
-
-  noCaratulas: string;
-  faseElementos: string;
-  hilosConexion: string;
-  khKr: string;
-  ampsClase: string;
-  volts: string;
-
-  kwh: string;
-  kw: string;
-  indicacion: "DIRECTA" | "INDICATIVA";
-
-  // ✅ extras para Excel/backend
-  rrRs: string;
-  lectura?: string; // por si luego lo agregas en UI
-  multiplicador: string;
-  kwTipo: string;
-
-  demanda: string;
-  kwPeriodo: string;
-  dias: string;
-  escala: string;
-
-  selloEncontrado: string;
-  selloDejado: string;
-};
-
-const EMPTY_MEDIDOR: MedidorFormData = {
+const EMPTY_MEDIDOR: MedidorData = {
   noCfe: "",
   noFabrica: "",
   marcaMedidor: "WASION",
@@ -83,14 +49,36 @@ const EMPTY_MEDIDOR: MedidorFormData = {
   selloDejado: "",
 };
 
+const pick = (...vals: any[]) => {
+  for (const v of vals) {
+    const s = v === null || v === undefined ? "" : String(v).trim();
+    if (s) return s;
+  }
+  return "";
+};
+
+const mergeEmptyOnly = (prev: any, patch: any) => {
+  const out = { ...prev };
+  for (const k of Object.keys(patch)) {
+    const cur = prev[k];
+    const curStr = cur === null || cur === undefined ? "" : String(cur).trim();
+    const nextStr = patch[k] === null || patch[k] === undefined ? "" : String(patch[k]).trim();
+    if (!curStr && nextStr) out[k] = patch[k];
+  }
+  return out;
+};
+
 export default function NewScreen({ navigation }: Props) {
   const [loading, setLoading] = useState(false);
   const [tipoOrden, setTipoOrden] = useState<TipoOrden>("INSTALACION");
 
+  const [buscandoRpu, setBuscandoRpu] = useState(false);
+  const lastRpuRef = useRef<string>("");
+  const triedRpuRef = useRef<string>(""); // para no spamear alerts
+
   const [general, setGeneral] = useState({
     fecha: new Date().toISOString(),
 
-    // ✅ nuevos
     ordenAtendida: "",
     rpu: "",
 
@@ -113,8 +101,8 @@ export default function NewScreen({ navigation }: Props) {
     recibidoPor: "",
   });
 
-  const [installed, setInstalled] = useState<MedidorFormData>({ ...EMPTY_MEDIDOR });
-  const [removed, setRemoved] = useState<MedidorFormData>({ ...EMPTY_MEDIDOR });
+  const [installed, setInstalled] = useState<MedidorData>({ ...EMPTY_MEDIDOR });
+  const [removed, setRemoved] = useState<MedidorData>({ ...EMPTY_MEDIDOR });
 
   const setGen = (k: keyof typeof general, v: any) => setGeneral((p) => ({ ...p, [k]: v }));
 
@@ -128,13 +116,63 @@ export default function NewScreen({ navigation }: Props) {
     [tipoOrden]
   );
 
-  const buildPayload = () => {
-    const payload: any = {
-      ...general,
-      tipoOrden,
-    };
+  // ✅ AUTO-RELLENAR por RPU (debounce)
+  useEffect(() => {
+    const rpu = (general.rpu || "").trim();
+    if (!rpu || rpu.length < 6) return;
+    if (lastRpuRef.current === rpu) return;
 
-    // ===== INSTALADO =====
+    const t = setTimeout(async () => {
+      setBuscandoRpu(true);
+      try {
+        const row = await padronService.getByRpu(rpu);
+
+        lastRpuRef.current = rpu;
+        triedRpuRef.current = rpu;
+
+        if (!row) {
+          // solo avisa una vez por RPU
+          if (!IS_WEB) Alert.alert("RPU no encontrado", "No hay datos en el padrón para ese RPU.");
+          return;
+        }
+
+        // ✅ mapeo general (ajusta nombres cuando confirmes columnas reales)
+        const generalPatch = {
+          usuario: pick(row.usuario, row.nombre, row.razon_social),
+          domicilio: pick(row.domicilio, row.direccion, row.calle, row.direccion_completa),
+          seConsumidor: pick(row.seConsumidor, row.servicio, row.claveSolicitud, row.clave_solicitud),
+          tarifa: pick(row.tarifa),
+          voltajePrimario: pick(row.voltajePrimario, row.tension),
+          agencia: pick(row.agencia, row.sucursal),
+          kws: pick(row.kws),
+        };
+
+        setGeneral((prev) => mergeEmptyOnly(prev, generalPatch));
+
+        // ✅ mapeo a medidor instalado (si tu excel trae info)
+        const instPatch: Partial<MedidorData> = {
+          multiplicador: pick(row.multiplicador),
+          kwh: pick(row.kwh),
+          kw: pick(row.kwh), // regla: iguales si solo viene uno
+          hilosConexion: pick(row.hilos),
+          noFabrica: pick(row.numeroMedidor, row.numero_medidor),
+        };
+
+        setInstalled((prev) => mergeEmptyOnly(prev, instPatch));
+      } catch (e: any) {
+        console.error(e);
+        if (!IS_WEB) Alert.alert("Error", "Falló la consulta del padrón. Revisa el backend.");
+      } finally {
+        setBuscandoRpu(false);
+      }
+    }, 500);
+
+    return () => clearTimeout(t);
+  }, [general.rpu]);
+
+  const buildPayload = () => {
+    const payload: any = { ...general, tipoOrden };
+
     if (showInst) {
       payload.noCfe = installed.noCfe;
       payload.noFabrica = installed.noFabrica;
@@ -151,14 +189,12 @@ export default function NewScreen({ navigation }: Props) {
       payload.volts = installed.volts;
 
       payload.rrRs = installed.rrRs;
-      payload.lectura = installed.lectura ?? "";
+      payload.lectura = installed.lectura;
       payload.multiplicador = installed.multiplicador;
       payload.kwTipo = installed.kwTipo;
 
-      // ✅ regla: KWH y KW igualitos (si te llega uno vacío, usa el otro)
-      const instLect = (installed.kwh || installed.kw || "").toString();
-      payload.inst_kwh = instLect;
-      payload.inst_kw = instLect;
+      payload.inst_kwh = installed.kwh;
+      payload.inst_kw = installed.kw;
 
       payload.demanda = installed.demanda;
       payload.kwPeriodo = installed.kwPeriodo;
@@ -171,7 +207,6 @@ export default function NewScreen({ navigation }: Props) {
       payload.inst_indicacion = installed.indicacion;
     }
 
-    // ===== RETIRADO =====
     if (showRet) {
       payload.ret_noCfe = removed.noCfe;
       payload.ret_noFabrica = removed.noFabrica;
@@ -183,19 +218,16 @@ export default function NewScreen({ navigation }: Props) {
       payload.ret_noCaratulas = removed.noCaratulas;
       payload.ret_faseElementos = removed.faseElementos;
       payload.ret_hilosConexion = removed.hilosConexion;
-      payload.ret_khKr = removed.khKr;
+      payload.ret_khKr = removed.khKr; // ✅ SOLO UNA VEZ
       payload.ret_ampsClase = removed.ampsClase;
       payload.ret_volts = removed.volts;
 
       payload.ret_rrRs = removed.rrRs;
-      payload.ret_lectura = removed.lectura ?? "";
       payload.ret_multiplicador = removed.multiplicador;
       payload.ret_kwTipo = removed.kwTipo;
 
-      // ✅ regla: KWH y KW igualitos
-      const retLect = (removed.kwh || removed.kw || "").toString();
-      payload.ret_kwh = retLect;
-      payload.ret_kw = retLect;
+      payload.ret_kwh = removed.kwh;
+      payload.ret_kw = removed.kw;
 
       payload.ret_indicacion = removed.indicacion;
     }
@@ -273,10 +305,16 @@ export default function NewScreen({ navigation }: Props) {
               <TextInput
                 placeholder="RPU"
                 value={general.rpu}
-                onChangeText={(v) => setGen("rpu", v)}
+                onChangeText={(v) => {
+                  lastRpuRef.current = "";
+                  setGen("rpu", v);
+                }}
                 mode="outlined"
                 outlineStyle={styles.inputOutline}
                 style={styles.input}
+                right={
+                  buscandoRpu ? <TextInput.Icon icon="progress-clock" /> : undefined
+                }
               />
             </View>
           </View>
@@ -335,7 +373,7 @@ export default function NewScreen({ navigation }: Props) {
         <View style={styles.section}>
           <View style={styles.sectionHeaderRow}>
             <MaterialIcons name="bolt" size={22} color="#111827" />
-            <Text variant="titleMedium" style={styles.sectionTitle}>S.E. consumidor / Servicio</Text>
+            <Text variant="titleMedium" style={styles.sectionTitle}>Servicio</Text>
           </View>
 
           <View style={styles.gap}>
@@ -354,26 +392,21 @@ export default function NewScreen({ navigation }: Props) {
               <View style={[styles.inputGroup, { flex: 1 }]}>
                 <Text variant="labelMedium" style={styles.inputLabel}>Voltaje primario</Text>
                 <TextInput
-                  placeholder="kV"
                   value={general.voltajePrimario}
                   onChangeText={(v) => setGen("voltajePrimario", v)}
                   mode="outlined"
                   outlineStyle={styles.inputOutline}
                   style={styles.input}
-                  keyboardType="numeric"
                 />
               </View>
-
               <View style={[styles.inputGroup, { flex: 1 }]}>
                 <Text variant="labelMedium" style={styles.inputLabel}>Voltaje secundario</Text>
                 <TextInput
-                  placeholder="V"
                   value={general.voltajeSecundario}
                   onChangeText={(v) => setGen("voltajeSecundario", v)}
                   mode="outlined"
                   outlineStyle={styles.inputOutline}
                   style={styles.input}
-                  keyboardType="numeric"
                 />
               </View>
             </View>
@@ -438,7 +471,7 @@ export default function NewScreen({ navigation }: Props) {
             <SelectField
               label="Medición En"
               value={general.medicionEn}
-              onChange={(v) => setGen("medicionEn", v as any)}
+              onChange={(v) => setGen("medicionEn", v)}
               options={[
                 { label: "Baja Tensión", value: "BAJA_TENSION" },
                 { label: "Alta Tensión", value: "ALTA_TENSION" },
@@ -457,25 +490,22 @@ export default function NewScreen({ navigation }: Props) {
           </View>
         </View>
 
-        {/* DINÁMICOS */}
         {showInst && (
           <View style={styles.section}>
-            {/* 👇 cast porque tu MeterForm está tipado con MedidorData en tu proyecto */}
-            <MeterForm title="Medidor Instalado" data={installed as any} onChange={setInstalled as any} />
+            <MeterForm title="Medidor Instalado" data={installed} onChange={setInstalled} />
           </View>
         )}
 
         {showRet && (
           <View style={styles.section}>
-            <MeterForm title="Medidor Retirado" data={removed as any} onChange={setRemoved as any} />
+            <MeterForm title="Medidor Retirado" data={removed} onChange={setRemoved} />
           </View>
         )}
 
-        {/* CIERRE */}
         <View style={styles.section}>
           <View style={styles.sectionHeaderRow}>
             <MaterialIcons name="edit" size={22} color="#111827" />
-            <Text variant="titleMedium" style={styles.sectionTitle}>Cierre de Registro</Text>
+            <Text variant="titleMedium" style={styles.sectionTitle}>Cierre</Text>
           </View>
 
           <View style={styles.inputGroup}>
@@ -490,7 +520,6 @@ export default function NewScreen({ navigation }: Props) {
           </View>
         </View>
 
-        {/* WEB: botón normal */}
         {IS_WEB && (
           <View style={{ marginTop: 24, marginBottom: 40 }}>
             <Button
@@ -510,7 +539,6 @@ export default function NewScreen({ navigation }: Props) {
         <View style={{ height: 80 }} />
       </ScrollView>
 
-      {/* ANDROID/IOS: barra fija */}
       {!IS_WEB && (
         <View style={styles.bottomBar}>
           <Button
@@ -534,6 +562,7 @@ const styles = StyleSheet.create({
   wrapper: { flex: 1, backgroundColor: "#f9fafb" },
   scroll: { flex: 1 },
   scrollContent: { padding: 20 },
+
   screenHeader: { marginBottom: 32, marginTop: 12 },
   mainTitle: { fontWeight: "800", color: "#111827", letterSpacing: -0.5 },
   mainSubtitle: { color: "#64748b", marginTop: 4, fontWeight: "500" },
@@ -545,8 +574,10 @@ const styles = StyleSheet.create({
   gap: { gap: 16 },
   inputGroup: { gap: 6 },
   inputLabel: { color: "#64748b", fontWeight: "600", marginLeft: 4, fontSize: 13 },
+
   input: { backgroundColor: "#ffffff", fontSize: 16 },
   inputOutline: { borderRadius: 12, borderColor: "#e2e8f0" },
+
   row: { flexDirection: "row", gap: 12 },
 
   bottomBar: {
